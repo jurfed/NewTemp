@@ -1,0 +1,1121 @@
+<c:ViewGroup xmlns:c="http://www.atsisa.com/gox/framework/view"
+             xmlns:r="http://www.atsisa.com/gox/reels/view"
+             xmlns:c1="http://www.atsisa.com/gox/tRexTrack/view"
+                y = "1080"
+                id="mainGroup" >
+    <c:children>
+
+        <c:ImageView src="@spriteSheet/backGround/Bgr_down_1" smoothing="true" id="Bgr_down_1" visible="true"/>
+        <c:ImageView src="@spriteSheet/backGround/Bgr_down_2" y="1024" smoothing="true" id="Bgr_down_2" visible="true"/>
+
+        <c:ImageView src="@spriteSheet/backGround2/Bgr_down_1" smoothing="true" id="Bgr_down_1f" visible="false"/>
+        <c:ImageView src="@spriteSheet/backGround2/Bgr_down_2" y="1024" smoothing="true" id="Bgr_down_2f" visible="false"/>
+
+        <r:ReelGroupView x="126.5" y="-22" id="reelGroupView">
+        <r:reels>
+            <r:ReelView width="320" x="28" id="reel1">
+                <r:symbolsConfiguration>
+                    <r:rowCount>4</r:rowCount>
+                    <r:symbolHeight>216</r:symbolHeight>
+                    <r:symbols>
+                        <r:poolDefinition poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                            <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                        </r:poolDefinition>
+                        <r:symbolsDefinition>
+                            <r:SymbolView name="TrackR" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol1" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol1" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol1" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol1" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol1" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA1" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK1" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ1" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ1" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol1" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD1" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD1" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD1" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD1" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD1" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation1" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation1" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation1" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation1" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation1" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation1" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation1" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation1" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation1" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation1" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation21" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation21" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation21" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation21" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation21" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbolR" visible="{#TrackR1}" tags="IDLE" id="trackSymbolR1"/>
+                                    <c:ImageView skin="@skin/trackSymbolInvert" visible="{#TrackRRevers1}"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Scatter" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/scatterSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/scatterSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Track" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol2" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol2" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol2" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol2" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol2" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA2" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK2" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ2" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ2" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol2" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD2" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD2" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD2" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD2" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD2" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation2" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation2" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation2" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation2" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation2" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation2" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation2" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation2" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation2" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation2" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation22" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation22" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation22" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation22" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation22" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbol" visible="{#Track1}" tags="IDLE" id="trackSymbolR2"/>
+                                    <c:ImageView skin="@skin/trackSymbolRInvert" visible="{#TrackRevers1}" />
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wild2Symbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wild2SymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wildSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wildSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink2" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolA" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolA"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolK" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolK"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolQ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolQ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolJ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolJ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Symbol10" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                        </r:symbolsDefinition>
+                    </r:symbols>
+                </r:symbolsConfiguration>
+            </r:ReelView>
+            <r:ReelView x="352" width="320" id="reel2">
+                <r:symbolsConfiguration>
+                    <r:rowCount>4</r:rowCount>
+                    <r:symbolHeight>216</r:symbolHeight>
+                    <r:symbols>
+                        <r:poolDefinition poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                            <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                        </r:poolDefinition>
+                        <r:symbolsDefinition>
+                            <r:SymbolView name="TrackR" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol3" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol3" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol3" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol3" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol3" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA3" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK3" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ3" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ3" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol3" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD3" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD3" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD3" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD3" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD3" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation3" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation3" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation3" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation3" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation3" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation3" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation3" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation3" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation3" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation3" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation23" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation23" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation23" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation23" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation23" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbolR" visible="{#TrackR2}" tags="IDLE" id="trackSymbolR3"/>
+                                    <c:ImageView skin="@skin/trackSymbolInvert" visible="{#TrackRRevers2}"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Scatter" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/scatterSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/scatterSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Track" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol4" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol4" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol4" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol4" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol4" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA4" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK4" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ4" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ4" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol4" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD4" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD4" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD4" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD4" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD4" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation4" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation4" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation4" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation4" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation4" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation4" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation4" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation4" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation4" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation4" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation24" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation24" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation24" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation24" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation24" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbol" visible="{#Track2}" tags="IDLE" id="trackSymbolR4"/>
+                                    <c:ImageView skin="@skin/trackSymbolRInvert" visible="{#TrackRevers2}" />
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wild2Symbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wild2SymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wildSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wildSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink2" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolA" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolA"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolK" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolK"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolQ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolQ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolJ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolJ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Symbol10" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                        </r:symbolsDefinition>
+                    </r:symbols>
+                </r:symbolsConfiguration>
+            </r:ReelView>
+            <r:ReelView x="676" width="320" id="reel3">
+                <r:symbolsConfiguration>
+                    <r:rowCount>4</r:rowCount>
+                    <r:symbolHeight>216</r:symbolHeight>
+                    <r:symbols>
+                        <r:poolDefinition poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                            <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                        </r:poolDefinition>
+                        <r:symbolsDefinition>
+                            <r:SymbolView name="TrackR" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol5" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol5" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol5" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol5" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol5" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA5" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK5" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ5" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ5" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol5" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD5" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD5" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD5" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD5" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD5" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation5" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation5" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation5" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation5" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation5" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation5" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation5" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation5" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation5" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation5" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation25" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation25" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation25" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation25" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation25" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbolR" visible="{#TrackR3}" tags="IDLE" id="trackSymbolR5"/>
+                                    <c:ImageView skin="@skin/trackSymbolInvert" visible="{#TrackRRevers3}"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Scatter" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/scatterSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/scatterSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Track" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol6" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol6" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol6" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol6" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol6" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA6" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK6" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ6" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ6" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol6" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD6" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD6" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD6" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD6" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD6" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation6" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation6" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation6" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation6" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation6" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation6" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation6" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation6" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation6" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation6" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation26" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation26" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation26" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation26" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation26" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbol" visible="{#Track3}" tags="IDLE" id="trackSymbolR6"/>
+                                    <c:ImageView skin="@skin/trackSymbolRInvert" visible="{#TrackRevers3}" />
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wild2Symbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wild2SymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wildSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wildSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink2" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolA" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolA"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolK" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolK"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolQ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolQ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolJ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolJ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Symbol10" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                        </r:symbolsDefinition>
+                    </r:symbols>
+                </r:symbolsConfiguration>
+            </r:ReelView>
+            <r:ReelView x="1000" width="320" id="reel4">
+                <r:symbolsConfiguration>
+                    <r:rowCount>4</r:rowCount>
+                    <r:symbolHeight>216</r:symbolHeight>
+                    <r:symbols>
+                        <r:poolDefinition poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                            <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                        </r:poolDefinition>
+                        <r:symbolsDefinition >
+                            <r:SymbolView name="TrackR" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol7" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol7" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol7" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol7" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol7" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA7" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK7" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ7" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ7" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol7" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD7" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD7" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD7" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD7" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD7" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation7" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation7" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation7" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation7" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation7" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation7" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation7" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation7" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation7" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation7" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation27" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation27" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation27" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation27" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation27" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbolR" visible="{#TrackR4}" tags="IDLE" id="trackSymbolR7"/>
+                                    <c:ImageView skin="@skin/trackSymbolInvert" visible="{#TrackRRevers4}"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Scatter" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/scatterSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/scatterSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Track" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol8" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol8" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol8" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol8" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol8" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA8" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK8" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ8" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ8" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol8" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD8" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD8" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD8" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD8" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD8" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation8" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation8" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation8" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation8" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation8" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation8" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation8" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation8" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation8" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation8" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation28" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation28" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation28" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation28" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation28" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbol" visible="{#Track4}" tags="IDLE" id="trackSymbolR8"/>
+                                    <c:ImageView skin="@skin/trackSymbolRInvert" visible="{#TrackRevers4}" />
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wild2Symbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wild2SymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wildSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wildSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbol"/>
+                                    <!--<c:ImageView src="@spriteSheet/GreenDinosaur/00"/>-->
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink2" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolA" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolA"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolK" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolK"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolQ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolQ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolJ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolJ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Symbol10" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                        </r:symbolsDefinition>
+                    </r:symbols>
+                </r:symbolsConfiguration>
+            </r:ReelView>
+            <r:ReelView x="1324" width="320" id="reel5">
+                <r:symbolsConfiguration>
+                    <r:rowCount>4</r:rowCount>
+                    <r:symbolHeight>216</r:symbolHeight>
+                    <r:symbols>
+                        <r:poolDefinition poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                            <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                        </r:poolDefinition>
+                        <r:symbolsDefinition>
+                            <r:SymbolView name="TrackR" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol9" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol9" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol9" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol9" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol9" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA9" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK9" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ9" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ9" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol9" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD9" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD9" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD9" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD9" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD9" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation9"  tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation9" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation9" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation9" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation9" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation9" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation9" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation9" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation9" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation9" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation29" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation29" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation29" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation29" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation29" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbolR" visible="{#TrackR5}" tags="IDLE" id="trackSymbolR9"/>
+                                    <c:ImageView skin="@skin/trackSymbolInvert" visible="{#TrackRRevers5}"/>
+
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Scatter" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/scatterSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/scatterSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Track" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol" id="violetSymbol10" tags="violetSymbol"/>
+                                    <c:ImageView skin="@skin/blueSymbol" id="blueSymbol10" tags="blueSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbol" id="greenSymbol10" tags="greenSymbol"/>
+                                    <c:ImageView skin="@skin/yellowSymbol" id="yellowSymbol10" tags="yellowSymbol"/>
+                                    <c:ImageView skin="@skin/pinkSymbol" id="pinkSymbol10" tags="pinkSymbol"/>
+                                    <c:ImageView skin="@skin/baseSymbolA" id="baseSymbolA10" tags="baseSymbolA"/>
+                                    <c:ImageView skin="@skin/baseSymbolK" id="baseSymbolK10" tags="baseSymbolK"/>
+                                    <c:ImageView skin="@skin/baseSymbolQ" id="baseSymbolQ10" tags="baseSymbolQ"/>
+                                    <c:ImageView skin="@skin/baseSymbolJ" id="baseSymbolJ10" tags="baseSymbolJ"/>
+                                    <c:ImageView skin="@skin/baseSymbol" id="baseSymbol10" tags="baseSymbol"/>
+                                    <c:ImageView skin="@skin/greenSymbolD" id="greenSymbolD10" tags="greenSymbolD"/>
+                                    <c:ImageView skin="@skin/yellowSymbolD" id="yellowSymbolD10" tags="yellowSymbolD"/>
+                                    <c:ImageView skin="@skin/pinkSymbolD" id="pinkSymbolD10" tags="pinkSymbolD"/>
+                                    <c:ImageView skin="@skin/blueSymbolD" id="blueSymbolD10" tags="blueSymbolD"/>
+                                    <c:ImageView skin="@skin/violetSymbolD" id="violetSymbolD10" tags="violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation" id="symbol5WinAnimation10" tags="symbol5WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation" id="symbol4WinAnimation10" tags="symbol4WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation" id="symbol1WinAnimation10" tags="symbol1WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation" id="symbol2WinAnimation10" tags="symbol2WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation" id="symbol3WinAnimation10" tags="symbol3WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation" id="symbolAWinAnimation10" tags="symbolAWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation" id="symbolKWinAnimation10" tags="symbolKWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation" id="symbolQWinAnimation10" tags="symbolQWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation" id="symbolJWinAnimation10" tags="symbolJWinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation" id="symbol10WinAnimation10" tags="symbol10WinAnimation"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2" id="symbol1WinAnimation210" tags="symbol1WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2" id="symbol2WinAnimation210" tags="symbol2WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2" id="symbol3WinAnimation210" tags="symbol3WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2" id="symbol4WinAnimation210" tags="symbol4WinAnimation2"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2" id="symbol5WinAnimation210" tags="symbol5WinAnimation2"/>
+                                    <c:ImageView skin="@skin/trackSymbol" visible="{#Track5}" tags="IDLE" id="trackSymbolR10"/>
+                                    <c:ImageView skin="@skin/trackSymbolRInvert" visible="{#TrackRevers5}" />
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wild2Symbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wild2SymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Wild" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/wildSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/wildSymbolAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Green2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/greenSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol1WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Yellow2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/yellowSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol2WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Pink2" defaultState="IDLE"  >
+                                <c:children>
+                                    <c:ImageView skin="@skin/pinkSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol3WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Blue2" defaultState="IDLE">
+                                <c:children>
+                                    <c:ImageView skin="@skin/blueSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol4WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Violet2" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/violetSymbolD"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol5WinAnimation2"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolA" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolA"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolAWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolK" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolK"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolKWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolQ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolQ" smoothing="true"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolQWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="SymbolJ" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbolJ"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbolJWinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                            <r:SymbolView name="Symbol10" defaultState="IDLE" >
+                                <c:children>
+                                    <c:ImageView skin="@skin/baseSymbol"/>
+                                    <c:KeyframeAnimationView skin="@skin/symbol10WinAnimation"/>
+                                </c:children>
+                            </r:SymbolView>
+                        </r:symbolsDefinition>
+                    </r:symbols>
+                </r:symbolsConfiguration>
+            </r:ReelView>
+        </r:reels>
+    </r:ReelGroupView>
+        <c:ImageView src="@spriteSheet/backGround/Bgr_up_1" smoothing="true" id="Bgr_up_1" visible="true"/>
+        <c:ImageView src="@spriteSheet/backGround/Bgr_up_2" y="1024" smoothing="true" id="Bgr_up_2" visible="true"/>
+
+        <c:ImageView src="@spriteSheet/backGround2/Bgr_up_1" smoothing="true" id="Bgr_up_1f" visible="false"/>
+        <c:ImageView src="@spriteSheet/backGround2/Bgr_up_2" y="1024" smoothing="true" id="Bgr_up_2f" visible="false"/>
+
+        <!--<c:ImageView src="@spriteSheet/backGround/separator" id="separator" smoothing="true" x="0" y="0" scaleX="1.25" scaleY="1.25"/>-->
+
+<!--        <c:KeyframeAnimationView skin="@skin/diamond" x="804" y="-300" id="diamondKeyFrame" depth="2" loop="true" autoPlay="true" visible="true"/>
+        <c:KeyframeAnimationView skin="@skin/diamond" x="804" y="-300" id="diamondKeyFrame2" depth="2"/>-->
+
+
+<!--Particles-->
+
+<!--        <c:ParticleView id="diamondParticle1" imageResource="@spriteSheet/diamond/15" x="600" y="500" visible="true" depth="2" state="RUNNING" minAngle="70" maxAngle="110" xOffset="200" minParticleLifetime="10" maxParticleLifetime="10" particlesPerSecond="3" maxParticles="200" startingSpeed="-900" endingSpeed="20000" startScale="1" endScale="4">
+            <c:spawnType class="com.atsisa.gox.framework.view.RectangleParticleSpawnType" width="800"></c:spawnType>
+        </c:ParticleView>-->
+
+
+<!--        <c:LineShapeView tags="line" x="40" y="35" color="#ff8712" thickness="7">
+            <c:points>
+                <c:point x="105" y="559"/>
+                <c:point x="233" y="559"/>
+
+                <c:point x="582" y="559"/>
+
+
+                <c:point x="820" y="127"/>
+                <c:point x="1020" y="127"/>
+
+                <c:point x="1260" y="559"/>
+
+                <c:point x="1600" y="559"/>
+                <c:point x="1735" y="559"/>
+            </c:points>
+        </c:LineShapeView>-->
+
+        <!--Track animations-->
+        <!--track 1-->
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="140" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation10"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="464" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation11"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="788" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation12"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="1112" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation13"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="1436" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation14"/>
+
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="484" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers10"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="808" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers11"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="1132" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers12"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="1456" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers13"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="1780" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers14"/>
+
+        <!--track 2-->
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="140" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation20"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="464" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation21"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="788" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation22"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="1112" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation23"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="1436" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation24"/>
+
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="484" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers20"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="808" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers21"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="1132" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers22"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="1456" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers23"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="1780" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers24"/>
+
+        <!--track 3-->
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="140" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation30"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="464" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation31"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="788" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation32"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="1112" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation33"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="1436" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation34"/>
+
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="484" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers30"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="808" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers31"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="1132" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers32"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="1456" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers33"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="1780" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers34"/>
+
+        <!--track 4-->
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="140" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation40"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="464" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation41"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="788" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation42"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1112" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation43"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1436" y="11" visible="false" autoPlay="false" loop="false" id="TrackAnimation44"/>
+
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="484" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers40"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="808" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers41"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1132" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers42"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1456" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers43"/>
+        <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1780" y="11" scaleX="-1.23" visible="false" autoPlay="false" loop="false" id="TrackAnimationRevers44"/>
+
+        <c:ImageView skin="@skin/scatterSymbol" x="113" y="-63" id="scatter1" visible="false"/>
+        <c:ImageView skin="@skin/scatterSymbol" x="433" y="-63" id="scatter2" visible="false"/>
+        <c:ImageView skin="@skin/scatterSymbol" x="753" y="-63" id="scatter3" visible="false"/>
+        <c:ImageView skin="@skin/scatterSymbol" x="1073" y="-63" id="scatter4" visible="false"/>
+        <c:ImageView skin="@skin/scatterSymbol" x="1393" y="-63" id="scatter5" visible="false"/>
+
+        <c:KeyframeAnimationView skin="@skin/trackSpin" x="730" y="-40" scaleX="2.3" scaleY="2.3" frameRateDivider="1" visible="false" autoPlay="false" loop="true" id="trackSpin3" beginLoopFrameNumber="2" endLoopFrameNumber="24"/>
+        <c:KeyframeAnimationView skin="@skin/trackSpin" x="1054" y="-40" scaleX="2.3" scaleY="2.3" frameRateDivider="1" visible="false" autoPlay="false" loop="true" id="trackSpin4" beginLoopFrameNumber="2" endLoopFrameNumber="24"/>
+        <c:KeyframeAnimationView skin="@skin/trackSpin" x="1378" y="-40" scaleX="2.3" scaleY="2.3" frameRateDivider="1" visible="false" autoPlay="false" loop="true" id="trackSpin5" beginLoopFrameNumber="2" endLoopFrameNumber="24"/>
+
+        <c:KeyframeAnimationView skin="@skin/ScatterSpin" x="730" y="-55" scaleX="2.3" scaleY="2.3" frameRateDivider="1" visible="false" autoPlay="false" loop="true" id="ScatterSpin3" beginLoopFrameNumber="1" endLoopFrameNumber="23"/>
+        <c:KeyframeAnimationView skin="@skin/ScatterSpin" x="1054" y="-55" scaleX="2.3" scaleY="2.3" frameRateDivider="1" visible="false" autoPlay="false" loop="true" id="ScatterSpin4" beginLoopFrameNumber="1" endLoopFrameNumber="23"/>
+        <c:KeyframeAnimationView skin="@skin/ScatterSpin" x="1378" y="-55" scaleX="2.3" scaleY="2.3" frameRateDivider="1" visible="false" autoPlay="false" loop="true" id="ScatterSpin5" beginLoopFrameNumber="1" endLoopFrameNumber="23"/>
+
+        <!--buttons for stop reels-->
+        <c:RectangleShapeView  width="312" height="860" x="158" y="40" visible="{#reel1Visible}" onRelease="#stopReel(0)" id="1"/>
+        <c:RectangleShapeView  width="312" height="860" x="480" y="40" visible="{#reel2Visible}" onRelease="#stopReel(1)" id="2"/>
+        <c:RectangleShapeView  width="312" height="860" x="804" y="40" visible="{#reel3Visible}" onRelease="#stopReel(2)" id="3"/>
+        <c:RectangleShapeView  width="312" height="860" x="1128" y="40" visible="{#reel4Visible}" onRelease="#stopReel(3)" id="4"/>
+        <c:RectangleShapeView  width="312" height="860" x="1452" y="40" visible="{#reel5Visible}" onRelease="#stopReel(4)" id="5"/>
+
+<!--free games-->
+        <c:MovieView src="@Movie/freeStart" id="freeStart" visible="false" autoPlay="false" loop="false"  y="0" x="200" scaleX="2" scaleY="2"/>
+        <c:MovieView src="@Movie/freeCycle" id="freeCycle" visible="false" autoPlay="false" loop="true"  y="0" x="200" scaleX="2" scaleY="2"/>
+        <c:MovieView src="@Movie/freeEnd" id="freeEnd" visible="false" autoPlay="false" loop="false"  y="0" x="200" scaleX="2" scaleY="2"/>
+
+
+        <c:ViewGroup y="-100" id="enterFreegames">
+            <c:children>
+
+                <!--PLACE FOR VIDEO-->
+
+                <c:TextView valign="MIDDLE" halign="CENTER" fontSize="100" fontName="you_won" id="you_won" visible="false" text="{#LangYouWon}" width="1920" height="1080"/>
+                <c:TextView valign="MIDDLE" halign="CENTER" fontSize="100" fontName="you_won" id="LangYouWonExtra" visible="false" text="{#LangYouWonExtra}" width="1920" height="1080" y="80"/>
+                <c:TextView valign="MIDDLE" halign="CENTER" fontSize="100" fontName="you_won" id="LangWonPlayed" visible="true" text="{#LangWonPlayed}" width="1920" height="1080" y="80"/>
+
+
+                <c:TextView valign="MIDDLE" halign="CENTER" fontSize="250" fontName="you_won_numbers" id="you_won_numbers" visible="false" text="10" width="1920" height="1080"/>
+                <c:TextView valign="MIDDLE" halign="CENTER" fontSize="100" fontName="you_won" id="played" visible="false" text="10" width="1920" height="1080" x="-190" y="230"/>
+
+
+
+            </c:children>
+        </c:ViewGroup>
+
+    </c:children>
+</c:ViewGroup>
