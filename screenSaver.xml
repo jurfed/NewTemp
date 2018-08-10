@@ -1,0 +1,1164 @@
+<ViewGroup xmlns="http://www.atsisa.com/gox/framework/view"
+           xmlns:oc="http://www.atsisa.com/gox/games/octavian/view"
+           xmlns:c="http://www.atsisa.com/gox/framework/view"
+           xmlns:r="http://www.atsisa.com/gox/reels/view"
+           depth="11">
+    <children>
+        <MovieView src="@Movie/logo_start" visible="false" autoPlay="false" loop="false" scaleX="1.5" scaleY="1.5"
+                   id="logo_start"/>
+        <MovieView src="@Movie/text_1" visible="false" autoPlay="false" loop="false" scaleX="1.5" scaleY="1.5"
+                   id="text_1"/>
+        <MovieView src="@Movie/text_2" visible="false" autoPlay="false" loop="false" scaleX="1.5" scaleY="1.5"
+                   id="text_2"/>
+        <MovieView src="@Movie/logo_end" visible="false" autoPlay="false" loop="false" scaleX="1.5" scaleY="1.5"
+                   id="logo_end"/>
+        <MovieView src="@Movie/movie" visible="false" autoPlay="false" loop="false" scaleX="1.5" scaleY="1.5"
+                   id="movie"/>
+        <!--<MovieView src="@Movie/paytable_effect" visible="false" autoPlay="false" loop="false" scaleX="1.5" scaleY="1.5" id="paytable_effect"/>-->
+
+        <!--******************************************Scene1******************************************-->
+        <ViewGroup id="scene1" visible="false">
+            <children>
+                <ViewGroup x="0" y="0">
+                    <children>
+                        <ViewGroup x="0" y="0" visible="false" depth="0" id="scene11">
+                            <children>
+                                <!--<ImageView src="@image/sb_wild" x="252" y="186" visible="true" scaleX="1.0" scaleY="1.0" depth="0"/>-->
+                                <KeyframeAnimationView skin="@skin/wildSymbolAnimation" x="252" y="186" visible="true"
+                                                       scaleX="1.0" scaleY="1.0" depth="0" loop="true" id="keyfr11"/>
+                            </children>
+                        </ViewGroup>
+                    </children>
+                </ViewGroup>
+                <ViewGroup x="0" y="0">
+                    <children>
+                        <ViewGroup x="0" y="0" tags="sp">
+                            <children>
+                                <ViewGroup x="0" y="0" visible="false" depth="0" id="scene12">
+                                    <children>
+                                        <TextView text="SUSTITUYE A TODOS&#xA;LOS SÍMBOLOS EXCEPTO" fontSize="80"
+                                                  scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                  fontName="sb_dino_title" x="535" y="235" visible="true" scaleX="0.9"
+                                                  scaleY="0.9" depth="0"/>
+                                        <TextView
+                                                text="Y CUENTA COMO DOBLE CUANDO&#xA;SUSTITUYE A LOS SÍMBOLOS&#xA;DE DINOSAURIO"
+                                                fontSize="80" scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                fontName="sb_dino_title" x="265" y="506" visible="true" scaleX="0.9"
+                                                scaleY="0.9" depth="0"/>
+                                        <KeyframeAnimationView skin="@skin/wild2SymbolAnimation" x="1241" y="501"
+                                                               visible="true" scaleX="1.0" scaleY="1.0" depth="0"
+                                                               loop="true" id="keyfr12"/>
+                                        <ImageView src="@image/sb_scatter" x="1370" y="280" visible="true" scaleX="0.55"
+                                                   scaleY="0.55" depth="0"/>
+                                    </children>
+                                </ViewGroup>
+                            </children>
+                        </ViewGroup>
+                        <ViewGroup x="0" y="0" tags="de">
+                            <children>
+                                <ViewGroup x="0" y="0" visible="false" depth="0" id="scene13">
+                                    <children>
+                                        <TextView text="ERSETZT ALLE SYMBOLE&#xA;AUSGENOMMEN" fontSize="80"
+                                                  scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                  fontName="sb_dino_title" x="535" y="235" visible="true" scaleX="0.9"
+                                                  scaleY="0.9" depth="0"/>
+                                        <TextView
+                                                text="UND ZÄHLT DOPPELT,&#xA;WENN DAS SYMBOL&#xA;DINOSAURIER-SYMBOLE&#xA;ERSETZT"
+                                                fontSize="80" scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                fontName="sb_dino_title" x="352" y="506" visible="true" scaleX="0.9"
+                                                scaleY="0.9" depth="0"/>
+                                        <ImageView src="@image/sb_scatter" x="1073" y="292" visible="true" scaleX="0.55"
+                                                   scaleY="0.55" depth="0"/>
+                                        <KeyframeAnimationView skin="@skin/wild2SymbolAnimation" x="1063" y="501"
+                                                               visible="true" scaleX="1.0" scaleY="1.0" depth="0"
+                                                               loop="true" id="keyfr13"/>
+                                    </children>
+                                </ViewGroup>
+                            </children>
+                        </ViewGroup>
+                        <ViewGroup x="0" y="0" tags="fr">
+                            <children>
+                                <ViewGroup x="0" y="0" visible="false" depth="0" id="scene14">
+                                    <children>
+                                        <TextView text="SE SUBSTITUE &#xA;À TOUS LES SYMBOLES SAUF " fontSize="80"
+                                                  scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                  fontName="sb_dino_title" x="535" y="235" visible="true" scaleX="0.9"
+                                                  scaleY="0.9" depth="0"/>
+                                        <TextView
+                                                text="ET COMPTE DOUBLE&#xA;QUAND IL SE SUBSTITUE &#xA;AUX SYMBOLES DE DINOSAURE "
+                                                fontSize="80" scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                fontName="sb_dino_title" x="254" y="506" visible="true" scaleX="0.9"
+                                                scaleY="0.9" depth="0"/>
+                                        <ImageView src="@image/sb_scatter" x="1525" y="280" visible="true" scaleX="0.55"
+                                                   scaleY="0.55" depth="0"/>
+                                        <KeyframeAnimationView skin="@skin/wild2SymbolAnimation" x="1178" y="501"
+                                                               visible="true" scaleX="1.0" scaleY="1.0" depth="0"
+                                                               loop="true" id="keyfr14"/>
+                                    </children>
+                                </ViewGroup>
+                            </children>
+                        </ViewGroup>
+                        <ViewGroup x="0" y="0" tags="cs">
+                            <children>
+                                <ViewGroup x="0" y="0" visible="false" depth="0" id="scene15">
+                                    <children>
+                                        <TextView text="NAHRAZUJE&#xA;VŠECHNY SYMBOLY KROMĚ " fontSize="80"
+                                                  scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                  fontName="sb_dino_title" x="535" y="235" visible="true" scaleX="0.9"
+                                                  scaleY="0.9" depth="0"/>
+                                        <TextView
+                                                text="A SE POČÍTÁ JAKO DVOJITÝ&#xA;PŘI NAHRAZENÍ&#xA;SYMBOLŮ DINOSAURUS"
+                                                fontSize="80" scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                fontName="sb_dino_title" x="354" y="506" visible="true" scaleX="0.9"
+                                                scaleY="0.9" depth="0"/>
+                                        <ImageView src="@image/sb_scatter" x="1462" y="280" visible="true" scaleX="0.55"
+                                                   scaleY="0.55" depth="0"/>
+                                        <KeyframeAnimationView skin="@skin/wild2SymbolAnimation" x="1166" y="501"
+                                                               visible="true" scaleX="1.0" scaleY="1.0" depth="0"
+                                                               loop="true" id="keyfr15"/>
+                                    </children>
+                                </ViewGroup>
+                            </children>
+                        </ViewGroup>
+                        <ViewGroup x="0" y="0" tags="default">
+                            <children>
+                                <ViewGroup x="0" y="0" visible="false" depth="0" id="scene16">
+                                    <children>
+                                        <TextView text="WILD SUBSTITUTES&#xA;FOR ALL SYMBOLS EXCEPT" fontSize="80"
+                                                  scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                  fontName="sb_dino_title" x="535" y="235" visible="true" scaleX="0.9"
+                                                  scaleY="0.9" depth="0"/>
+                                        <TextView
+                                                text="AND COUNTS AS DOUBLE&#xA;WHEN SUBSTITUTING&#xA;FOR DINOSAUR SYMBOLS"
+                                                fontSize="80" scaleAutoWidth="true" halign="LEFT" valign="TOP"
+                                                fontName="sb_dino_title" x="354" y="506" visible="true" scaleX="0.9"
+                                                scaleY="0.9" depth="0"/>
+                                        <KeyframeAnimationView skin="@skin/wild2SymbolAnimation" x="1114" y="501"
+                                                               visible="true" scaleX="1.0" scaleY="1.0" depth="0"
+                                                               loop="true" id="keyfr16"/>
+                                        <ImageView src="@image/sb_scatter" x="1450" y="280" visible="true" scaleX="0.55"
+                                                   scaleY="0.55" depth="0"/>
+                                    </children>
+                                </ViewGroup>
+                            </children>
+                        </ViewGroup>
+                    </children>
+                </ViewGroup>
+                <ViewGroup x="0" y="0">
+                    <children>
+                        <ViewGroup x="0" y="0" visible="true" depth="0"/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+
+        <!--******************************************Scene2******************************************-->
+        <ViewGroup x="0" y="-10" tags="default sp de fr cs">
+            <children>
+                <ViewGroup id="violet" scaleX="0.8" scaleY="0.8" x="192" y="250" alpha="0" visible="true">
+                    <children>
+                        <KeyframeAnimationView skin="@skin/symbol5WinAnimation2" x="140" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="violet1" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol5WinAnimation2" x="464" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="violet2" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol5WinAnimation2" x="788" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="violet3" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol5WinAnimation2" x="1112" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="violet4" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol5WinAnimation2" x="1436" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="violet5" tags=""/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+
+        <ViewGroup x="0" y="-10" tags="default sp de fr cs">
+            <children>
+                <ViewGroup id="pink" scaleX="0.8" scaleY="0.8" x="192" y="250" alpha="0" visible="false">
+                    <children>
+                        <KeyframeAnimationView skin="@skin/symbol3WinAnimation2" x="140" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="pink1" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol3WinAnimation2" x="464" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="pink2" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol3WinAnimation2" x="788" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="pink3" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol3WinAnimation2" x="1112" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="pink4" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol3WinAnimation2" x="1436" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="pink5" tags=""/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+
+        <ViewGroup x="0" y="-10" tags="default sp de fr cs">
+            <children>
+                <ViewGroup id="green" scaleX="0.8" scaleY="0.8" x="192" y="250" alpha="0" visible="false">
+                    <children>
+                        <KeyframeAnimationView skin="@skin/symbol1WinAnimation2" x="140" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="green1" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol1WinAnimation2" x="464" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="green2" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol1WinAnimation2" x="788" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="green3" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol1WinAnimation2" x="1112" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="green4" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol1WinAnimation2" x="1436" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="green5" tags=""/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+
+        <ViewGroup x="0" y="-10" tags="default sp de fr cs">
+            <children>
+                <ViewGroup id="yellow" scaleX="0.8" scaleY="0.8" x="192" y="250" alpha="0" visible="false">
+                    <children>
+                        <KeyframeAnimationView skin="@skin/symbol2WinAnimation2" x="140" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="yellow1" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol2WinAnimation2" x="464" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="yellow2" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol2WinAnimation2" x="788" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="yellow3" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol2WinAnimation2" x="1112" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="yellow4" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol2WinAnimation2" x="1436" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="yellow5" tags=""/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+
+        <ViewGroup x="0" y="-10" tags="default sp de fr cs">
+            <children>
+                <ViewGroup id="blue" scaleX="0.8" scaleY="0.8" x="192" y="250" alpha="0" visible="false">
+                    <children>
+                        <KeyframeAnimationView skin="@skin/symbol4WinAnimation2" x="140" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="blue1" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol4WinAnimation2" x="464" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="blue2" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol4WinAnimation2" x="788" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="blue3" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol4WinAnimation2" x="1112" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="blue4" tags=""/>
+                        <KeyframeAnimationView skin="@skin/symbol4WinAnimation2" x="1436" y="11" visible="true"
+                                               autoPlay="false"
+                                               loop="false" id="blue5" tags=""/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+        <!--******************************************Scene3******************************************-->
+
+        <!--******************************************Scene4******************************************-->
+
+        <!-- ********** REELS ********** -->
+
+        <r:ReelGroupView id="reelGroupView">
+            <r:reels>
+                <r:ReelView x="367" y="180" scaleX="0.754" scaleY="0.754" id="reel1">
+                    <r:symbolsConfiguration>
+                        <r:rowCount>4</r:rowCount>
+                        <r:symbolHeight>216</r:symbolHeight>
+                        <r:symbols>
+                            <r:poolDefinition
+                                    poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                                <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                            </r:poolDefinition>
+                            <r:symbolsDefinition>
+                                <r:SymbolView name="TrackR" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbolR" tags="IDLE"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Scatter" defaultState="IDLE" depth="1" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Track" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbol" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolRInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild2" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green2" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow2" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink2" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue2" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet2" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolA" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolK" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolQ" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolJ" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Symbol10" defaultState="IDLE" visible="false">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                            </r:symbolsDefinition>
+                        </r:symbols>
+                    </r:symbolsConfiguration>
+                </r:ReelView>
+                <r:ReelView x="604.2" y="180" scaleX="0.754" scaleY="0.754" id="reel2">
+                    <r:symbolsConfiguration>
+                        <r:rowCount>4</r:rowCount>
+                        <r:symbolHeight>216</r:symbolHeight>
+                        <r:symbols>
+                            <r:poolDefinition
+                                    poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                                <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                            </r:poolDefinition>
+                            <r:symbolsDefinition>
+                                <r:SymbolView name="TrackR" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbolR" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Scatter" defaultState="IDLE" depth="1">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Track" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbol" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolRInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green2" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow2" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink2" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue2" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolA" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolK" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolQ" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolJ" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet2" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Symbol10" defaultState="IDLE">
+                                    <c:children>
+
+                                    </c:children>
+                                </r:SymbolView>
+                            </r:symbolsDefinition>
+                        </r:symbols>
+                    </r:symbolsConfiguration>
+                </r:ReelView>
+                <r:ReelView x="841.4" y="180" scaleX="0.754" scaleY="0.754" id="reel3">
+                    <r:symbolsConfiguration>
+                        <r:rowCount>4</r:rowCount>
+                        <r:symbolHeight>216</r:symbolHeight>
+                        <r:symbols>
+                            <r:poolDefinition
+                                    poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                                <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                            </r:poolDefinition>
+                            <r:symbolsDefinition>
+                                <r:SymbolView name="TrackR" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbolR" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Scatter" defaultState="IDLE" depth="1">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Track" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbol" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolRInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolA" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolK" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolQ" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolJ" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Symbol10" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                            </r:symbolsDefinition>
+                        </r:symbols>
+                    </r:symbolsConfiguration>
+                </r:ReelView>
+                <r:ReelView x="1078.6" y="180" scaleX="0.754" scaleY="0.754" id="reel4">
+                    <r:symbolsConfiguration>
+                        <r:rowCount>4</r:rowCount>
+                        <r:symbolHeight>216</r:symbolHeight>
+                        <r:symbols>
+                            <r:poolDefinition
+                                    poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                                <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                            </r:poolDefinition>
+                            <r:symbolsDefinition>
+                                <r:SymbolView name="TrackR" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbolR" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Scatter" defaultState="IDLE" depth="1">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Track" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbol" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolRInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolA" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolK" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolQ" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolJ" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Symbol10" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                            </r:symbolsDefinition>
+                        </r:symbols>
+                    </r:symbolsConfiguration>
+                </r:ReelView>
+                <r:ReelView x="1315.8" y="180" scaleX="0.754" scaleY="0.754" id="reel5">
+                    <r:symbolsConfiguration>
+                        <r:rowCount>4</r:rowCount>
+                        <r:symbolHeight>216</r:symbolHeight>
+                        <r:symbols>
+                            <r:poolDefinition
+                                    poolInitializationStrategyClass="com.atsisa.gox.reels.view.FixedSymbolPoolStrategy">
+                                <r:fixedSymbolCount>7</r:fixedSymbolCount>
+                            </r:poolDefinition>
+                            <r:symbolsDefinition>
+                                <r:SymbolView name="TrackR" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbolR" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolInvert"/>
+
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Scatter" defaultState="IDLE" depth="1">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Track" defaultState="IDLE">
+                                    <c:children>
+                                        <c:ImageView skin="@skin/trackSymbol" tags="IDLE"/>
+                                        <c:ImageView skin="@skin/trackSymbolRInvert"/>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Wild" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Green2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Yellow2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Pink2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Blue2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Violet2" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolA" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolK" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolQ" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="SymbolJ" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                                <r:SymbolView name="Symbol10" defaultState="IDLE">
+                                    <c:children>
+                                    </c:children>
+                                </r:SymbolView>
+                            </r:symbolsDefinition>
+                        </r:symbols>
+                    </r:symbolsConfiguration>
+                </r:ReelView>
+            </r:reels>
+        </r:ReelGroupView>
+
+        <!--Scene4/step 0 symbols under the track animation SymbolA-->
+        <ViewGroup id="symbolForStep0" tags="default sp de fr cs">
+            <children>
+                <!--reel0-->
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="367" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="367" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel2-->
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="841.4" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="841.4" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="841.4" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel4-->
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="1315.8" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="1315.8" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="1315.8" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolA" visible="false" x="1315.8" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+            </children>
+        </ViewGroup>
+        <!--Scene4/step 1 symbols under the track animation  green-->
+        <ViewGroup id="symbolForStep1" tags="default sp de fr cs">
+            <children>
+                <!--reel0-->
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="367" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="367" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel1-->
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="604.2" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="604.2" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="604.2" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="604.2" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel2-->
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="841.4" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="841.4" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="841.4" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel3-->
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1078.6" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1078.6" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1078.6" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1078.6" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel4-->
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1315.8" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1315.8" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1315.8" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/greenSymbolD" visible="false" x="1315.8" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+            </children>
+        </ViewGroup>
+        <!--Scene4/step 2 symbols under the track animation blue-->
+        <ViewGroup id="symbolForStep2" tags="default sp de fr cs">
+            <children>
+                <!--reel0-->
+                <ImageView skin="@skin/blueSymbol" visible="false" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="367" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="367" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel1-->
+                <ImageView skin="@skin/blueSymbol" visible="false" x="604.2" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="604.2" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel2-->
+                <ImageView skin="@skin/blueSymbol" visible="false" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="841.4" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="841.4" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="841.4" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel4-->
+                <ImageView skin="@skin/blueSymbol" visible="false" x="1315.8" y="506" scaleX="0.925" scaleY="0.925"/>
+                <ImageView skin="@skin/blueSymbol" visible="false" x="1315.8" y="669" scaleX="0.925" scaleY="0.925"/>
+
+            </children>
+        </ViewGroup>
+        <!--Scene4/step 3 symbols under the track animation-->
+        <ViewGroup id="symbolForStep3" tags="default sp de fr cs">
+            <children>
+                <!--reel0-->
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="367" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="367" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel1-->
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="604.2" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="604.2" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="604.2" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="604.2" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel2-->
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/baseSymbolQ" visible="false" x="841.4" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+            </children>
+        </ViewGroup>
+        <!--Scene4/step 4 symbols under the track animation-->
+        <ViewGroup id="symbolForStep4" tags="default sp de fr cs">
+            <children>
+                <!--reel0-->
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="367" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="367" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel4-->
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="1315.8" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="1315.8" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="1315.8" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/pinkSymbolD" visible="false" x="1315.8" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+            </children>
+        </ViewGroup>
+        <!--Scene4/step 5 symbols under the track animation-->
+        <ViewGroup id="symbolForStep5" tags="default sp de fr cs">
+            <children>
+                <!--reel0-->
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="367" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="367" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel1-->
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="604.2" y="180" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="604.2" y="343" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="604.2" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="604.2" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel2-->
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="841.4" y="506" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="841.4" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+                <!--reel3-->
+                <ImageView skin="@skin/violetSymbolD" visible="false" x="1078.6" y="669" scaleX="0.925" scaleY="0.925"
+                           tags=""/>
+
+            </children>
+        </ViewGroup>
+
+
+        <!-- ********** Track animation ********** -->
+        <ViewGroup x="-11" y="25" tags="default sp de fr cs">
+            <children>
+                <!--scene4 first track animation. TrackAnimation00: first reel and first animation-->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation00" tags="" fps="15"/>
+                <!--TrackAnimation02: third reel and first animation-->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation20" tags="" fps="15"/>
+                <!--TrackAnimation04: fourth reel and first animation-->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1315.8" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation40" tags="" fps="15"/>
+
+                <!--scene4 second track animation -->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation01" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="604.2" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation11" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation21" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1078.6" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation31" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1315.8" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation41" tags="" fps="15"/>
+
+                <!--scene4 third track animation -->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation02" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="604.2" y="506" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation12" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation22" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="1315.8" y="506" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation42" tags="" fps="15"/>
+
+                <!--scene4 fourth track animation -->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation03" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="604.2" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation13" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="841.4" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation23" tags="" fps="15"/>
+
+                <!--scene4 fifth track animation -->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="367" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation04" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="1315.8" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation44" tags="" fps="15"/>
+
+                <!--scene4 sixth track animation -->
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation3" x="367" y="343" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation05" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation4" x="604.2" y="180" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation15" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation2" x="841.4" y="506" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation25" tags="" fps="15"/>
+                <c:KeyframeAnimationView skin="@skin/TrackAnimation1" x="1078.6" y="669" scaleX="0.925" scaleY="0.925"
+                                         visible="false" autoPlay="false"
+                                         loop="false" id="TrackAnimation35" tags="" fps="15"/>
+            </children>
+        </ViewGroup>
+
+        <ViewGroup x="0" y="0" tags="sp">
+            <children>
+                <ViewGroup x="0" y="0" visible="true" depth="0" id="track41">
+                    <children>
+                        <TextView text="CARACTERÍSTICA PISTA" fontSize="80" scaleAutoWidth="true" halign="CENTER"
+                                  valign="TOP" fontName="sb_dino_title" x="0" y="80" visible="true" width="1920.0"
+                                  scaleX="1.0" scaleY="1.0" depth="0"/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+        <ViewGroup x="0" y="0" tags="de">
+            <children>
+                <ViewGroup x="0" y="0" visible="true" depth="0" id="track42">
+                    <children>
+                        <TextView text="SPUREN-FEATURE" fontSize="80" scaleAutoWidth="true" halign="CENTER" valign="TOP"
+                                  fontName="sb_dino_title" x="0" y="80" visible="true" width="1920.0" scaleX="1.0"
+                                  scaleY="1.0" depth="0"/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+        <ViewGroup x="0" y="0" tags="fr">
+            <children>
+                <ViewGroup x="0" y="0" visible="true" depth="0" id="track43">
+                    <children>
+                        <TextView text="JEU COMPLÉMENTAIRE DE TRACE" fontSize="80" scaleAutoWidth="true" halign="CENTER"
+                                  valign="TOP" fontName="sb_dino_title" x="0" y="80" visible="true" width="1920.0"
+                                  scaleX="1.0" scaleY="1.0" depth="0"/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+        <ViewGroup x="0" y="0" tags="cs">
+            <children>
+                <ViewGroup x="0" y="0" visible="true" depth="0" id="track44">
+                    <children>
+                        <TextView text="TRACK FEATURE" fontSize="80" scaleAutoWidth="true" halign="CENTER" valign="TOP"
+                                  fontName="sb_dino_title" x="0" y="80" visible="true" width="1920.0" scaleX="1.0"
+                                  scaleY="1.0" depth="0"/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+        <ViewGroup x="0" y="0" tags="default">
+            <children>
+                <ViewGroup x="0" y="0" visible="true" depth="0" id="track45">
+                    <children>
+                        <TextView text="TRACK FEATURE" fontSize="80" scaleAutoWidth="true" halign="CENTER" valign="TOP"
+                                  fontName="sb_dino_title" x="0" y="80" visible="true" width="1920.0" scaleX="1.0"
+                                  scaleY="1.0" depth="0"/>
+                    </children>
+                </ViewGroup>
+            </children>
+        </ViewGroup>
+
+    </children>
+</ViewGroup>
