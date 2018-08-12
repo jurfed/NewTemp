@@ -1,0 +1,22 @@
+<freeGames xmlns="http://www.atsisa.com/gox/gamelogic/freeGames">
+    <freeGameTriggerDescriptors>
+        <freeGameTriggerDescriptor>
+            <winId>64</winId>
+            <freeGamesAmount>50</freeGamesAmount>
+        </freeGameTriggerDescriptor>
+        <freeGameTriggerDescriptor>
+            <winId>63</winId>
+            <freeGamesAmount>25</freeGamesAmount>
+        </freeGameTriggerDescriptor>
+        <freeGameTriggerDescriptor>
+            <winId>34</winId>
+            <freeGamesAmount>2</freeGamesAmount>
+        </freeGameTriggerDescriptor>
+
+        <freeGameTriggerDescriptor>
+            <winId>65</winId>
+            <freeGamesAmount>1</freeGamesAmount>
+        </freeGameTriggerDescriptor>
+
+    </freeGameTriggerDescriptors>
+</freeGames>
