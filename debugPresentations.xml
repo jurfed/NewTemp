@@ -1,0 +1,137 @@
+<queues xmlns="http://www.atsisa.com/gox/framework/action"
+        xmlns:r="http://www.atsisa.com/gox/reels/action"
+        xmlns:d="http://www.atsisa.com/gox/reels-debug/action">
+
+    <queue name="GameStart">
+        <actions>
+            <ExecuteNow queueName="Clear"/>
+            <r:DisplayStoppedSymbols/>
+
+            <ShowScreen screenId="reel_bg"/>
+            <ShowScreen screenId="reel_bg_free_game"/>
+            <!--BASE SCREEN-->
+            <ShowScreen screenId="baseGameScreen"/>
+
+
+            <ShowScreen screenId="reel_bg_ground"/>
+            <ShowScreen screenId="bgrScreen"/>
+            <ShowScreen screenId="winLinesScreen"/>
+            <ShowScreen screenId="wonPanelScreen"/>
+
+            <ShowScreen screenId="universalBigWinScreen"/>
+            <ShowScreen screenId="payTableBgrScreen"/>
+
+            <ShowScreen screenId="payTableScreen"/>
+
+            <ShowScreen screenId="particlesScreen"/>
+
+            <ShowScreen screenId="sideBarScreen"/>
+            <ShowScreen screenId="advancedControlPanelScreen"/>
+            <ShowScreen screenId="controlPanelScreen"/>
+            <ShowScreen screenId="logoScreen"/>
+
+            <r:UpdateMessageArea message="{#LangPlaceYourBet}" messageType="BOTTOM_PANEL"/>
+            <r:UpdatePresentation state="IDLE"/>
+            <FadeOutScreen screenId="fadeScreen" timeSpan="250"/>
+        </actions>
+    </queue>
+
+    <queue name="ShowDebugScreen">
+        <actions>
+            <ShowScreen screenId="debugScreen"/>
+        </actions>
+    </queue>
+
+    <queue name="CancelDebug">
+        <actions>
+            <d:ClearDebugState/>
+            <HideScreen screenId="debugScreen"/>
+        </actions>
+    </queue>
+
+    <queue name="HideDebugScreen">
+        <actions>
+            <HideScreen screenId="debugScreen"/>
+        </actions>
+    </queue>
+
+    <queue name="DebugSpinReels">
+        <actions>
+            <HideScreen screenId="debugScreen"/>
+            <InsertQueue name="SpinReels"/>
+        </actions>
+    </queue>
+
+    <queue name="SelectedGamblerBlackWin" force="true">
+        <actions>
+            <r:UpdatePresentation state="DISABLED"/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdateGamblerScreen state="SELECTED_BLACK_CARD"/>
+            <ParallelBundle finishCondition="ANY">
+                <d:SendGambleDebugRequest selectionName="BetBlack" win="true"/>
+                <LoopBundle>
+                    <ToggleViewVisibility layoutId="gambler" viewId="animationCard"/>
+                    <Pause pauseTime="100"/>
+                </LoopBundle>
+            </ParallelBundle>
+        </actions>
+    </queue>
+
+    <queue name="SelectedGamblerBlackLose" force="true">
+        <actions>
+            <r:UpdatePresentation state="DISABLED"/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdateGamblerScreen state="SELECTED_BLACK_CARD"/>
+            <ParallelBundle finishCondition="ANY">
+                <d:SendGambleDebugRequest selectionName="BetBlack" win="false"/>
+                <LoopBundle>
+                    <ToggleViewVisibility layoutId="gambler" viewId="animationCard"/>
+                    <Pause pauseTime="100"/>
+                </LoopBundle>
+            </ParallelBundle>
+        </actions>
+    </queue>
+
+    <queue name="SelectedGamblerRedLose" force="true">
+        <actions>
+            <r:UpdatePresentation state="DISABLED"/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdateGamblerScreen state="SELECTED_RED_CARD"/>
+            <ParallelBundle finishCondition="ANY">
+                <d:SendGambleDebugRequest selectionName="BetRed" win="false"/>
+                <LoopBundle>
+                    <ToggleViewVisibility layoutId="gambler" viewId="animationCard"/>
+                    <Pause pauseTime="100"/>
+                </LoopBundle>
+            </ParallelBundle>
+        </actions>
+    </queue>
+
+    <queue name="SelectedGamblerRedWin" force="true">
+        <actions>
+            <r:UpdatePresentation state="DISABLED"/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdateGamblerScreen state="SELECTED_RED_CARD"/>
+            <ParallelBundle finishCondition="ANY">
+                <d:SendGambleDebugRequest selectionName="BetRed" win="true"/>
+                <LoopBundle>
+                    <ToggleViewVisibility layoutId="gambler" viewId="animationCard"/>
+                    <Pause pauseTime="100"/>
+                </LoopBundle>
+            </ParallelBundle>
+        </actions>
+    </queue>
+
+    <queue name="ExecuteNextDependingOnAutoPlaySpin">
+        <actions>
+            <r:ExecuteNextDependingOnAutoPlay queueName="DebugSpinReels"/>
+        </actions>
+    </queue>
+
+    <queue name="SendBetRequest">
+        <actions>
+            <d:SendBetDebugRequest minimumWaitTime="0" />
+        </actions>
+    </queue>
+
+</queues>

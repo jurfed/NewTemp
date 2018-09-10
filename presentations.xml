@@ -1,22 +1,23 @@
 <queues xmlns="http://www.atsisa.com/gox/framework/action"
         xmlns:r="http://www.atsisa.com/gox/reels/action"
-        xmlns:txGame="http://www.atsisa.com/gox/games/trextrack/action"
-        xmlns:occore="http://www.atsisa.com/gox/games/common/action"
+        xmlns:e="http://www.atsisa.com/gox/reels/extended/symbol/action"
         xmlns:f="http://www.atsisa.com/gox/reels/free/games/action"
->
+        xmlns:b="http://www.atsisa.com/game/queencleopatra/action"
+        xmlns:occore="http://www.atsisa.com/gox/games/common/action"
+        xmlns:R="http://www.atsisa.com/gox/reels/action">
 
     <queue name="InitializeGame">
         <actions>
             <r:SendInitRequest/>
-            <!--<FadeInScreen screenId="fadeScreen" timeSpan="250"/>-->
+            <FadeInScreen screenId="fadeScreen" timeSpan="250"/>
         </actions>
     </queue>
 
     <queue name="OnError">
         <actions>
             <StopAllSounds/>
-            <!--<UpdateScreen screenId="baseGameScreen" method="pause"/>-->
-            <!--<UpdateScreen screenId="gamblerScreen" method="pause"/>-->
+            <UpdateScreen screenId="baseGameScreen" method="pause"/>
+            <UpdateScreen screenId="gamblerScreen" method="pause"/>
             <!--<UpdateScreen screenId="infoScreen" method="pause"/>-->
             <ShowScreen screenId="errorScreen"/>
         </actions>
@@ -30,18 +31,19 @@
 
     <queue name="Clear">
         <actions>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <!--<b:Startlisteninglanguage/>-->
+            <b:InitHandlingLogoMovies/>     <!--!!!!!!!!!!!-->
+            <b:SetConfigurationWinLineView/>
+            <!--<b:SetReelsSpeen/>-->
             <r:StopAutoPlay/>
-            <InsertQueue name="ClearFreeGamesState"/>
             <FadeInScreen screenId="fadeScreen" timeSpan="250"/>
-            <!--<UpdateScreen screenId="baseGameScreen" method="reset"/>-->
+            <UpdateScreen screenId="baseGameScreen" method="reset"/>
             <r:UpdatePresentation state="Idle"/>
-            <!--<UpdateScreen screenId="winLinesScreen" method="reset"/>-->
-            <!--<UpdateScreen screenId="gamblerScreen" method="reset"/>-->
+            <UpdateScreen screenId="winLinesScreen" method="reset"/>
+            <UpdateScreen screenId="gamblerScreen" method="reset"/>
             <!--<UpdateScreen screenId="infoScreen" method="reset"/>-->
             <r:HideWinningLines/>
-            <!--<b:SetSymbolsTransparency transparency="false"/>-->
-            <txGame:StopPayTableAnimation/>
-            <Pause pauseTime="100"/>
             <r:StopAnimationWinningSymbols/>
             <HideScreen screenId="gamblerScreen">
                 <animation>
@@ -65,508 +67,54 @@
             <ShowScreen screenId="winLinesScreen"/>
             <r:UpdateMessageArea message="{#LangPlaceYourBet}" messageType="BOTTOM_PANEL"/>
             <r:UpdatePresentation state="Idle"/>
+            <!--<ExecuteNow queueName="HideFeatureBackground"/>-->
             <FadeOutScreen screenId="fadeScreen" timeSpan="250"/>
         </actions>
     </queue>
 
     <queue name="SpinReels">
         <actions>
-            <HideScreen screenId="infoScreen"/>
-            <txGame:TrackTakeWinFix removeIDLE="false"/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="false"/>
-            <!--<Pause pauseTime="200"/>-->
-            <txGame:SetTagsForTrackSymbols/>
-            <Pause pauseTime="150"/>
-            <txGame:HideWinLinesAction/>
+            <!--<b:HideFreeGamesWonPanel/>-->
+            <b:StopSplashScreenVideo/>
             <r:UpdatePresentation state="RunningReels"/>
-
-            <!--<UpdateScreen screenId="infoScreen" method="reset"/>-->
+            <UpdateScreen screenId="infoScreen" method="reset"/>
             <r:SpinReels/>
             <r:AutoPlayBundle expectAutoPlayOn="true">
                 <Pause pauseTime="200"/>
             </r:AutoPlayBundle>
             <r:UpdateMessageArea message="{#SimpleLangGoodLuck}" messageType="BOTTOM_PANEL"/>
-            <txGame:StartSoundSpeenReelBaseGame/>
-            <!--<PlaySound soundId="spin_1" loop="false"/>-->
+            <r:AutoPlayBundle expectAutoPlayOn="false">
+                <PlaySound soundId="reelstartIllinois"/>
+                <b:StartSoundSpeenReelBaseGame/>
+            </r:AutoPlayBundle>
             <StartTimer timerName="spin" duration="0"/>
             <InsertQueue name="SendBetRequest"/>
-            <txGame:FindStoppedSymbols/>
-            <txGame:UnLockCanTakeWin/>
+            <b:FindStoppedSymbols/>
         </actions>
     </queue>
 
-
-    <queue name="EnterFreeGames">
+    <queue name="BaseGameLimit">
         <actions>
-            <Pause pauseTime="100"/>
-            <txGame:StartAnalyzeWinSymbols reset="true"/>
-            <Pause pauseTime="100"/>
-            <r:UpdatePresentation state="StoppingReels"/><!--book-->
-            <Bundle><!--book-->
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <r:UpdatePresentation state="RunningReels"/><!--book-->
-            <r:StopReels forceStop="true"/><!--book-->
-            <txGame:StopSoundSpeenReelBaseGame/>
-            <!--<b:SetTagsForTrackSymbols/>-->
-            <txGame:StartTrackAnimation win="true"/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="true"/>
-            <Pause pauseTime="200"/>
-            <r:StartAnimationWinningSymbols/><!--book-->
-            <txGame:StartAnalyzeWinSymbols/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="false"/>
-            <Pause pauseTime="200"/>
-            <r:UpdatePresentation state="ReelsWinAnimation"/><!--book-->
-            <txGame:CollectSound play="true"/>
-            <txGame:LinePause restore="true"/>
-            <txGame:InitCollect/>
-            <ParallelBundle finishCondition="ANY"><!--book....-->
-                <LoopBundle>
-                    <occore:UpdateCollect target="winIndicator"/>
-                    <Pause pauseTime="60"/>
-                </LoopBundle>
-                <r:WinningLinesBundle>
-                    <r:ShowNextWinningLine/>
-                    <LinePause restore="true"/>
-                    <txGame:LinePause firstPause="2000" pause="300"/>
-                </r:WinningLinesBundle>
-            </ParallelBundle>
-            <occore:WinCountStop/>
-            <txGame:CollectSound play="false"/>
-            <txGame:LinePause restore="true"/>
-            <r:ShowNextWinningLine/><!--book-->
-            <ExecuteNow queueName="ShowFeatureBackground"/>
-            <r:HideWinningLines/>
-            <r:UpdatePresentation state="EnterFreeGames"/>
-            <txGame:StopPayTableAnimation/>
-            <!--<r:ExecuteNextDependingOnAutoPlay queueName="StartExtendedSymbolAnimation"/>-->
-            <ExecuteNext queueName="FreeGamesSpin"/>
-            <!--<InsertQueue name="BaseGameWin"/>-->
-        </actions>
-    </queue>
-
-    <queue name="ShowFeatureBackground">
-        <actions>
-            <r:UpdateMessageArea message="{#LangFreeGames}" messageType="BOTTOM_PANEL"/>
-            <r:HideWinningLines/>
-            <txGame:ReturnOriginalSymbolDepth/>
-            <PlaySound soundId="free_intro" blocking="true" loop="false"/>
-            <PlaySound soundId="free_loop" blocking="false" loop="true"/>
-            <txGame:EnterFreeGames enter="true"/>
-            <r:UpdatePresentation state="ScatterAnimation"/>
-            <txGame:PlayStartVideo stage="enter"/>
-            <txGame:PlayStartVideo2 stage="enter"/>
-        </actions>
-    </queue>
-
-    <queue name="HideFeatureBackground">
-        <actions>
-            <r:UpdatePresentation state="ScatterAnimation"/>
-            <!--<txGame:TrackTakeWinFix removeIDLE="false"/>-->
-            <StopSound soundId="free_loop"/>
-            <PlaySound soundId="free_outro" blocking="false"/>
-            <txGame:PlayStartVideo stage="end"/>
-            <txGame:PlayStartVideo2 stage="end"/>
-            <txGame:EnterFreeGames enter="false"/>
-            <!--<txGame:TrackTakeWinFix removeIDLE="true"/>-->
-        </actions>
-    </queue>
-
-    <queue name="FreeGamesSpin">
-        <actions>
-            <txGame:TrackTakeWinFix removeIDLE="false"/>
-            <txGame:ReturnOriginalSymbolDepth/>
-            <r:StopAnimationWinningSymbols/>
-            <r:HideWinningLines/>
-            <txGame:StopPayTableAnimation/>
-            <txGame:SetSymbolsTransparency transparency="false"/>
-            <!--<txGame:TrackTakeWinFix removeIDLE="false"/>-->
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="false"/>
-            <!--<Pause pauseTime="200"/>-->
-            <txGame:SetTagsForTrackSymbols/>
-            <Pause pauseTime="150"/>
-            <txGame:HideWinLinesAction/>
-            <r:UpdatePresentation state="FreeGamesRunningReels"/>
-            <r:SpinReels/>
-            <r:AutoPlayBundle expectAutoPlayOn="true">
-                <Pause pauseTime="200"/>
-            </r:AutoPlayBundle>
-            <!--<PlaySound soundId="FeatureBkg" loop="true"/>-->
-            <r:CleanWinningLines/>
-            <StartTimer timerName="spin" duration="0"/>
-            <!--<b:FindStoppedSymbols/>-->
-            <f:SendNextFreeGameRequest/>
-            <txGame:UnLockCanTakeWin/>
-        </actions>
-    </queue>
-
-    <queue name="StartFreeGame">
-        <actions>
-            <txGame:Temp3/>
-            <Pause pauseTime="100"/>
-        </actions>
-    </queue>
-
-    <queue name="FreeGameNext">
-        <actions>
-            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
-            <txGame:FindStoppedSymbols/>
-            <InsertQueue name="FreeGamesPresentation"/>
-            <InsertQueue name="FreeGamesSpin"/>
-        </actions>
-    </queue>
-
-<!--if win amount in this spin > 0 -->
-    <queue name="FreeGamesRetrigger">
-        <actions>
-
-            <txGame:FindStoppedSymbols/>
-            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
-            <txGame:ExecuteNextDependingOnLoseFreeGame
-                    queueName="FreeGamesRetriggerWin"/> <!--if amount in this last free game == 0 then cancel this queue-->
-
-            <!--<r:UpdateMessageArea message="{#LangFreeGame} - {#LangOf}" messageType="BOTTOM_PANEL"/>-->
-            <InsertQueue name="FreeGamesPresentation"/>
-            <!--<ShowScreen screenId="freeGamesBannerScreen"/>-->
-            <!--<r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>-->
-            <r:UpdatePresentation state="FreeGamesRetrigger"/>
-            <StopSound soundId="free_loop"/>
-            <PlaySound soundId="free_intro" blocking="false" loop="false"/>
-            <txGame:AfterFreeGamesRetriggerSound/>
-            <txGame:PlayStartVideo stage="reEnter"/>
-            <txGame:PlayStartVideo2 stage="reEnter"/>
-            <!--<HideScreen screenId="freeGamesBannerScreen"/>-->
-            <ExecuteNext queueName="FreeGamesSpin"/>
-        </actions>
-    </queue>
-
-    <!--if win amount in this spin == 0 -->
-    <queue name="FreeGamesRetriggerWin">
-        <actions>
-            <!--<r:UpdateMessageArea message="{#LangFreeGame} - {#LangOf}" messageType="BOTTOM_PANEL"/>-->
-            <InsertQueue name="FreeGamesPresentationRetrigger"/>
-            <!--<ShowScreen screenId="freeGamesBannerScreen"/>-->
-            <!--<r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>-->
-            <r:UpdatePresentation state="FreeGamesRetrigger"/>
-
-            <StopSound soundId="free_loop"/>
-            <PlaySound soundId="free_intro" blocking="false" loop="false"/>
-            <txGame:AfterFreeGamesRetriggerSound/>
-            <txGame:PlayStartVideo stage="reEnter"/>
-            <txGame:PlayStartVideo2 stage="reEnter"/>
-            <!--<HideScreen screenId="freeGamesBannerScreen"/>-->
-            <ExecuteNext queueName="FreeGamesSpin"/>
-        </actions>
-    </queue>
-
-    <!--when win amount before retrigger==0-->
-    <queue name="FreeGamesPresentationRetrigger"> <!--wen win sum=0-->
-        <actions>
-            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
-            <Bundle>
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <r:UpdatePresentation state="None"/>
-            <r:StopReels forceStop="true"/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <txGame:StartTrackAnimation win="false"/>
-            <Pause pauseTime="200"/>
-            <r:StartAnimationWinningSymbols/>
-            <r:UpdatePresentation state="FreeGamesWinAnimation"/>
-            <!--<r:StartAnimationWinningSymbols/>-->
-            <!--<r:StartAnimationWinningSymbols/>-->
-            <Pause pauseTime="200"/>
-            <Pause pauseTime="200"/>
-            <!--<InsertQueue name="FreeGamesSpin"/>-->
-        </actions>
-    </queue>
-
-    <queue name="FreeGamesPresentation">
-        <actions>
-            <txGame:ExecuteNextDependingOnLoseFreeGame queueName="FreeGameLose"/>
-            <Pause pauseTime="100"/>
-            <txGame:StartAnalyzeWinSymbols reset="true"/>
-            <Pause pauseTime="100"/>
-            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
-            <Bundle>
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <r:UpdatePresentation state="None"/>
-            <r:StopReels forceStop="true"/>
-            <!--<StopSound soundId="spin_1"/>-->
-            <txGame:StopSoundSpeenReelBaseGame/>
-            <!--<b:SetTagsForTrackSymbols/>-->
-            <txGame:StartTrackAnimation win="true"/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="true"/>
-            <Pause pauseTime="200"/>
-            <r:StartAnimationWinningSymbols/>
-            <txGame:StartAnalyzeWinSymbols/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="false"/>
-            <Pause pauseTime="200"/>
-            <r:UpdatePresentation state="FreeGamesWinAnimation"/>
-            <!--<r:UpdatePresentation state="ReelsWinAnimation"/>-->
-            <!--<PlaySound soundId="collect"/>-->
-            <txGame:CollectSound play="true" freeGame="true"/>
-            <txGame:LinePause restore="true"/>
-            <txGame:InitFreeGameCollect/>
-            <!--<b:InitFreeGameCollect/>-->
-            <ParallelBundle finishCondition="ANY">
-                <LoopBundle>
-                    <occore:UpdateCollect target="winIndicator"/>
-                    <Pause pauseTime="60"/>
-                </LoopBundle>
-                <r:WinningLinesBundle>
-                    <r:ShowNextWinningLine/>
-                    <LinePause restore="true"/>
-                    <txGame:LinePause firstPause="2000" pause="300"/>
-                </r:WinningLinesBundle>
-            </ParallelBundle>
-            <occore:UpdateFreeGameCollect/>
-            <txGame:CollectSound play="false" freeGame="true"/>
-            <txGame:LinePause restore="true"/>
-            <r:HideWinningLines/>
-            <!--<r:StopAnimationWinningSymbols/>-->
-        </actions>
-    </queue>
-
-
-    <queue name="FreeGameLose">
-        <actions>
-            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
-            <Bundle>
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <r:UpdatePresentation state="None"/>
-            <r:StopReels forceStop="true"/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-
-            <txGame:StartTrackAnimation win="false"/>
-            <Pause pauseTime="200"/>
-            <r:UpdatePresentation state="FreeGamesWinAnimation"/>
-            <!--<r:StartAnimationWinningSymbols/>-->
-            <r:StartAnimationWinningSymbols/>
-            <Pause pauseTime="200"/>
-            <r:StopAnimationWinningSymbols/>
-            <Pause pauseTime="200"/>
-            <InsertQueue name="FreeGamesSpin"/>
-        </actions>
-    </queue>
-
-    <queue name="ClearFreeGamesState">
-        <actions>
-            <f:ResetFreeGames/>
-            <txGame:StopPayTableAnimation/>
-        </actions>
-    </queue>
-
-
-    <!--if amount in all free games>0 and amount in the last free game > 0-->
-    <queue name="FreeGamesWin">
-        <actions>
-            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
-            <txGame:FindStoppedSymbols/>
-            <txGame:ExecuteNextDependingOnLoseFreeGame
-                    queueName="FreeGamesEnd"/> <!--if amount in this last free game == 0 then cancel this queue-->
-            <!--<r:UpdateMessageArea message="{#LangFreeGame} - {#LangOf}" messageType="BOTTOM_PANEL"/>-->
-            <InsertQueue name="FreeGamesPresentation"/>
-            <!--<r:UpdateMessageArea message="{#LangFreeGamesCompleted}" messageType="BOTTOM_PANEL"/>-->
-
-            <r:DisplayStoppedSymbols/>
-            <!--<b:StartTrackAnimation win="true"/>-->
-            <InsertQueue name="HideFeatureBackground"/>
-            <r:UpdatePresentation state="OfferGambler"/>
-            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
-            <r:StopAnimationWinningSymbols/>
-            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
-            <PlaySound soundId="GambleLoop" loop="true"/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <txGame:StopPayTableAnimation/>
-            <StopSound soundId="GambleLoop"/>
-        </actions>
-    </queue>
-
-    <!--if amount in all free games>==0-->
-    <queue name="FreeGamesEnd">
-        <actions>
-
-            <txGame:ExecuteNextDependingOnNoTakeWin
-                    queueName="EndAndTakeWin"/> <!--if all FreeGamesWinAmount() > 0 then cancel this queue-->
-            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
-            <Bundle>
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <r:UpdatePresentation state="None"/>
-            <r:StopReels forceStop="true"/>
-            <Pause pauseTime="200"/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <txGame:StartTrackAnimation win="false"/>
-            <InsertQueue name="HideFeatureBackground2"/>
-            <r:DisplayStoppedSymbols/>
-            <r:UpdatePresentation state="Idle"/>
-            <!--<txGame:TrackTakeWinFix removeIDLE="true"/>-->
-            <txGame:StopPayTableAnimation/>
-            <InsertQueue name="ClearFreeGamesState"/>
-            <InsertQueue name="ExecuteNextDependingOnAutoPlaySpin"/>
-            <r:UpdatePresentation state="GameWin"/>
-            <Pause pauseTime="200"/>
-            <r:UpdatePresentation state="Idle"/>
-            <txGame:FixEndFreegamesWithoutWonAmount/>
-            <txGame:Temp2/>
-        </actions>
-    </queue>
-
-    <queue name="HideFeatureBackground2">
-        <actions>
-            <r:UpdatePresentation state="ScatterAnimation"/>
-            <StopSound soundId="free_loop"/>
-            <PlaySound soundId="free_outro" blocking="false"/>
-            <txGame:PlayStartVideo stage="end"/>
-            <txGame:PlayStartVideo2 stage="end"/>
-            <txGame:EnterFreeGames enter="false"/>
-        </actions>
-    </queue>
-
-    <!--if all free games amount>0 but in the last free game==0 -->
-    <queue name="EndAndTakeWin">
-        <actions>
-
-            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
-            <Bundle>
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <!--<Pause pauseTime="3000"/>-->
-            <!--<r:UpdatePresentation state="OfferGambler"/>-->
-            <r:StopReels forceStop="true"/>
-            <Pause pauseTime="200"/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <txGame:StartTrackAnimation win="false"/>
-            <!--<r:DisplayStoppedSymbols/>-->
-            <!--<r:StartAnimationWinningSymbols/>-->
-            <InsertQueue name="HideFeatureBackground2"/>
-            <r:DisplayStoppedSymbols/>
-
-            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
-            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
-            <PlaySound soundId="GambleLoop" loop="true"/>
-
-            <!--<txGame:TrackTakeWinFix removeIDLE="true"/>-->
-            <r:UpdatePresentation state="OfferGambler"/>
-
-
-            <!--            <r:ShowNextWinningLine/>
-                        <LoopBundle>
-                            <Pause pauseTime="1000"/>
-                            <r:ShowNextWinningLine/>
-                        </LoopBundle>-->
-            <!--<b:StopPayTableAnimation/>-->
-        </actions>
-    </queue>
-
-
-    <queue name="BaseGameWin">
-        <actions>
-            <Pause pauseTime="100"/>
-            <!--<txGame:TrackTakeWinFix removeIDLE="true"/>-->
-            <txGame:StartAnalyzeWinSymbols reset="true"/>
-            <Pause pauseTime="100"/>
             <r:UpdatePresentation state="StoppingReels"/>
             <Bundle>
                 <WaitForTimer timerName="spin"/>
                 <r:StopReels/>
             </Bundle>
-            <r:UpdatePresentation state="None"/>
             <r:StopReels forceStop="true"/>
-            <!--<StopSound soundId="spin_1"/>-->
-            <txGame:StopSoundSpeenReelBaseGame/>
-            <!--<b:SetTagsForTrackSymbols/>-->
-            <txGame:StartTrackAnimation win="true"/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="true"/>
-            <Pause pauseTime="200"/>
+            <b:StopSoundSpeenReelBaseGame/>
+            <!--<PauseSound soundId="ReelSpinMelody"/>-->
             <r:StartAnimationWinningSymbols/>
-            <txGame:StartAnalyzeWinSymbols/>
-            <!--<Pause pauseTime="100"/>-->
-            <txGame:TrackShortAnimationFix shortFix="false"/>
-            <!--<Pause pauseTime="200"/>-->
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
             <r:UpdatePresentation state="ReelsWinAnimation"/>
-            <!--<PlaySound soundId="collect"/>-->
-            <txGame:CollectSound play="true"/>
-            <txGame:LinePause restore="true"/>
-            <txGame:InitCollect/>
-            <!--<InsertQueue name="ShowWin"/>-->
-
-            <ParallelBundle finishCondition="ANY">
-                <LoopBundle>
-                    <occore:UpdateCollect target="winIndicator"/>
-                    <Pause pauseTime="60"/>
-                </LoopBundle>
-                <r:WinningLinesBundle>
-                    <r:ShowNextWinningLine/>
-                    <LinePause restore="true"/>
-                    <txGame:LinePause firstPause="2000" pause="300"/>
-                </r:WinningLinesBundle>
-            </ParallelBundle>
-            <occore:WinCountStop/>
-            <!--<r:ShowNextWinningLine/>-->
-            <!--<PlaySound soundId="WinCountStop"/>-->
-            <r:UpdatePresentation state="OfferGambler"/>
-            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
-            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
-            <!--<StopSound soundId="collect"/>-->
-            <txGame:CollectSound play="false"/>
-            <txGame:LinePause restore="true"/>
-            <PlaySound soundId="GambleLoop" loop="true"/>
-            <LoopBundle>
-                <Pause pauseTime="700"/>
+            <r:WinningLinesBundle>
                 <r:ShowNextWinningLine/>
-                <occore:UpdateCurrentWinLine/>
-            </LoopBundle>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <StopSound soundId="GambleLoop"/>
-
-        </actions>
-    </queue>
-
-    <queue name="StartWinningAnimations">
-        <actions>
-            <ParallelBundle finishCondition="ANY">
-                <LoopBundle>
-                    <occore:UpdateCollect target="winIndicator"/>
-                    <Pause pauseTime="60"/>
-                </LoopBundle>
-                <r:WinningLinesBundle>
-                    <r:ShowNextWinningLine/>
-                    <LinePause restore="true"/>
-                    <txGame:LinePause firstPause="2000" pause="300"/>
-                </r:WinningLinesBundle>
-            </ParallelBundle>
-            <occore:WinCountStop/>
-            <!--<r:ShowNextWinningLine/>-->
-            <!--<PlaySound soundId="WinCountStop"/>-->
-            <r:UpdatePresentation state="OfferGambler"/>
-            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
-            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
-            <!--<StopSound soundId="collect"/>-->
-            <txGame:CollectSound play="false"/>
-            <txGame:LinePause restore="true"/>
-            <PlaySound soundId="GambleLoop" loop="true"/>
-            <LoopBundle>
-                <Pause pauseTime="700"/>
-                <r:ShowNextWinningLine/>
-                <occore:UpdateCurrentWinLine/>
-            </LoopBundle>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <StopSound soundId="GambleLoop"/>
+                <occore:ShowLinesPays/>
+                <!--<r:UpdateMessageArea message="{#LangLineXPays}" messageType="BOTTOM_PANEL"/>-->
+                <r:PlayCurrentWinningLineSound/>
+            </r:WinningLinesBundle>
+            <r:ShowNextWinningLine/>
+            <PlaySound soundId="WinCountStop"/>
+            <ExecuteNext queueName="TakeWin"/>
         </actions>
     </queue>
 
@@ -579,11 +127,9 @@
             </Bundle>
             <r:UpdatePresentation state="GameLose"/>
             <r:StopReels forceStop="true"/>
-            <!--<StopSound soundId="spin_1"/>-->
-            <txGame:StopSoundSpeenReelBaseGame/>
-            <txGame:FreeGamesTakeWinFix showUnderTrackSymbol="true"/>
-            <txGame:StartTrackAnimation win="false"/>
-            <Pause pauseTime="100"/>
+            <!--<PauseSound soundId="ReelSpinMelody"/>-->
+            <b:StopSoundSpeenReelBaseGame/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
             <r:AutoPlayBundle expectAutoPlayOn="false">
                 <r:UpdateMessageArea message="{#LangGameOver} - {#LangPlaceYourBet}" messageType="BOTTOM_PANEL"/>
             </r:AutoPlayBundle>
@@ -595,11 +141,152 @@
         </actions>
     </queue>
 
+    <queue name="BaseGameWin">
+        <actions>
+            <r:UpdatePresentation state="StoppingReels"/>
+            <Bundle>
+                <WaitForTimer timerName="spin"/>
+                <r:StopReels/>
+            </Bundle>
+            <b:StopSoundSpeenReelBaseGame/>
+            <r:UpdatePresentation state="None"/>
+            <r:StopReels forceStop="true"/>
+            <b:StopSoundSpeenReelBaseGame/>
+            <!--<b:SimpleCollect skip="true"/>-->
+            <b:ExecuteNextDependingOnBigWin queueName="BaseGameBigWin"/>
+            <r:StartAnimationWinningSymbols/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdatePresentation state="ReelsWinAnimation"/>
+            <!--            <b:InitCollect/>
+                        <InsertQueue name="ShowWin"/>-->
+            <!--START COLLECT-->
+
+            <Bundle>
+                <b:InitCollect/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <r:PlayCurrentWinningLineSound/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+            <!--IF COLLECT DONE THEN SKIP THIS QUEUE-->
+            <b:CheckShortCollect queueName="BaseGameWinShortCollect"/>
+
+            <ParallelBundle finishCondition="ANY">
+                <LoopBundle>
+                    <b:UpdateCollectAction2 target="winIndicator"/>
+                    <Pause pauseTime="70"/>
+                </LoopBundle>
+
+                <LoopBundle>
+                    <r:ShowNextWinningLine/>
+                    <occore:ShowLinesPays/>
+                    <Pause pauseTime="1000"/>
+                </LoopBundle>
+
+                <Bundle>
+                    <PlaySound soundId="collect_intro" blocking="true"/>
+                    <PlaySound soundId="collect_loop" loop="true" blocking="true"/>
+                </Bundle>
+
+                <b:FinishCollect/>
+            </ParallelBundle>
+
+            <StopSound soundId="collect_intro"/>
+            <StopSound soundId="collect_loop"/>
+            <PlaySound soundId="collect_end"/>
+            <occore:WinCountStop/>
+            <!--FINISH COLLECT-->
+
+            <r:UpdatePresentation state="OfferGambler"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
+            <b:ExecuteNextDependingOnGambleOffAction queueName="TakeWin"/>
+            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
+            <PlaySound soundId="GambleLoop" loop="true"/>
+            <LoopBundle>
+                <Pause pauseTime="1000"/>
+                <r:ShowNextWinningLine/>
+                <occore:ShowLinesPays/>
+            </LoopBundle>
+            <StopSound soundId="GambleLoop"/>
+        </actions>
+    </queue>
+
+    <queue name="BaseGameBigWin">
+        <actions>
+            <occore:InitBigWinCollectAction/>
+            <InsertQueue name="ShowWin"/>
+            <!--START COLLECT-->
+        </actions>
+    </queue>
+
+
+    <queue name="StartWinningAnimations">
+        <actions>
+            <r:StartAnimationWinningSymbols/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdatePresentation state="ReelsWinAnimation"/>
+            <r:WinningLinesBundle>
+                <r:ShowNextWinningLine/>
+                <occore:ShowLinesPays/>
+                <r:PlayCurrentWinningLineSound/>
+            </r:WinningLinesBundle>
+
+            <r:UpdatePresentation state="OfferGambler"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
+            <b:ExecuteNextDependingOnGambleOffAction queueName="TakeWin"/>
+            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
+
+            <PlaySound soundId="GambleLoop" loop="true"/>
+            <LoopBundle>
+                <Pause pauseTime="1000"/>
+                <r:ShowNextWinningLine/>
+                <occore:ShowLinesPays/>
+            </LoopBundle>
+            <StopSound soundId="GambleLoop"/>
+        </actions>
+    </queue>
+
+
+    <queue name="BaseGameWinShortCollect">
+        <actions>
+            <occore:WinCountStop/>
+
+            <r:UpdatePresentation state="OfferGambler"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
+            <b:ExecuteNextDependingOnGambleOffAction queueName="TakeWin"/>
+            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
+            <PlaySound soundId="GambleLoop" loop="true"/>
+            <LoopBundle>
+                <Pause pauseTime="1000"/>
+                <r:ShowNextWinningLine/>
+                <occore:ShowLinesPays/>
+            </LoopBundle>
+            <StopSound soundId="GambleLoop"/>
+        </actions>
+    </queue>
+
+
+    <queue name="BaseGameWinNoSound">
+        <actions>
+
+        </actions>
+    </queue>
+
+
     <queue name="RBaseGameWin">
         <actions>
             <InsertQueue name="InitResume"/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
             <r:WinningLinesBundle>
                 <r:ShowNextWinningLine/>
+                <occore:ShowLinesPays/>
             </r:WinningLinesBundle>
             <r:StartAnimationWinningSymbols/>
             <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
@@ -614,130 +301,46 @@
         </actions>
     </queue>
 
-    <queue name="SpecialScatter">
-        <actions>
-            <r:HideWinningLines/>
-            <r:StopAnimationWinningSymbols/>
-            <Pause pauseTime="500"/>
-            <HideSelectedExtendedSymbol/>
-            <HideScreen screenId="enterFeatureBannerScreen"/>
-            <HideScreen screenId="infoScreen">
-                <animation>
-                    <destinationY>-1080</destinationY>
-                    <timeSpan>0</timeSpan>
-                </animation>
-            </HideScreen>
-            <ExecuteNext queueName="FreeGamesSpin"/>
-        </actions>
-    </queue>
-
-    <queue name="ScatterWin">
-        <actions>
-            <Pause pauseTime="100"/>
-            <txGame:StartAnalyzeWinSymbols reset="true"/>
-            <Pause pauseTime="100"/>
-            <r:UpdatePresentation state="StoppingReels"/>
-            <Bundle>
-                <WaitForTimer timerName="spin"/>
-                <r:StopReels/>
-            </Bundle>
-            <r:UpdatePresentation state="None"/>
-            <r:StopReels forceStop="true"/>
-            <!--<StopSound soundId="spin_1"/>-->
-            <txGame:StopSoundSpeenReelBaseGame/>
-            <!--<b:SetTagsForTrackSymbols/>-->
-            <txGame:StartTrackAnimation win="true"/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="true"/>
-            <Pause pauseTime="200"/>
-            <r:StartAnimationWinningSymbols/>
-            <txGame:StartAnalyzeWinSymbols/>
-            <Pause pauseTime="100"/>
-            <txGame:TrackShortAnimationFix shortFix="false"/>
-            <Pause pauseTime="200"/>
-            <r:UpdatePresentation state="ReelsWinAnimation"/>
-            <!--<PlaySound soundId="collect"/>-->
-            <txGame:CollectSound play="true"/>
-            <txGame:LinePause restore="true"/>
-            <txGame:InitCollect/>
-            <ParallelBundle finishCondition="ANY">
-                <LoopBundle>
-                    <occore:UpdateCollect target="winIndicator"/>
-                    <Pause pauseTime="60"/>
-                </LoopBundle>
-                <r:WinningLinesBundle>
-                    <r:ShowNextWinningLine/>
-                    <LinePause restore="true"/>
-                    <txGame:LinePause firstPause="2000" pause="300"/>
-                </r:WinningLinesBundle>
-            </ParallelBundle>
-            <occore:WinCountStop/>
-            <!--<r:ShowNextWinningLine/>-->
-            <!--<PlaySound soundId="WinCountStop"/>-->
-            <r:UpdatePresentation state="OfferGambler"/>
-            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
-            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
-            <!--<StopSound soundId="collect"/>-->
-            <txGame:CollectSound play="false"/>
-            <txGame:LinePause restore="true"/>
-            <!--<b:EnterFreeGames enter="true"/>-->
-            <!--<PlaySound soundId="GambleLoop" loop="true"/>-->
-            <LoopBundle>
-                <Pause pauseTime="700"/>
-                <r:ShowNextWinningLine/>
-                <occore:UpdateCurrentWinLine/>
-            </LoopBundle>
-            <StopSound soundId="GambleLoop"/>
-        </actions>
-    </queue>
-
 
     <queue name="TakeWin">
         <actions>
-            <InsertQueue name="ClearFreeGamesState"/>
-            <!--<txGame:TrackTakeWinFix removeIDLE="true"/>-->
-            <!--<Pause pauseTime="200"/>-->
-            <StopSound soundId="collect1"/>
+
             <StopSound soundId="GambleLoop"/>
             <r:UpdatePresentation state="GameWin"/>
-            <r:SendTakeWinRequest/>
-            <txGame:ReturnOriginalSymbolDepth/>
+            <!--<r:SendTakeWinRequest/>-->
+            <b:CustomSendTakeWinRequest/>
+            <InsertQueue name="ClearFreeGamesState"/>
+            <b:ReturnOriginalSymbolDepth/>
+            <!--<b:ResetAllFreeGamesAmount/>-->
         </actions>
     </queue>
 
     <queue name="OfferGamblerTakeWin">
         <actions>
-            <Pause pauseTime="100"/>
-            <r:StartAnimationWinningSymbols/>
-            <StopSound soundId="DeckSound"/>
-            <HideScreen screenId="gamblerScreen">
-                <animation>
-                    <destinationX>1920</destinationX>
-                    <timeSpan>0</timeSpan>
-                </animation>
-            </HideScreen>
+
+            <b:Ftemp2/>
+            <r:StopAnimationWinningSymbols/>
+            <r:HideWinningLines/>
             <r:UpdatePresentation state="WinCounting"/>
             <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
             <!--<occore:TransferWin/>-->
-            <txGame:TransferWinCustom/>
-
+            <b:TransferWinCustom/>
             <ParallelBundle finishCondition="ANY">
+                <!--<PlaySound soundId="BalanceToWin" loop="true" blocking="true"/>-->
                 <PlaySound soundId="BalanceToWin"/>
-                <!--<r:StartWinToBalanceAnimation singleStepDuration="100" skipSoundId="BalanceToWinSkip"/>-->
-                <!--<LoopBundle>-->
-                <!--<r:ShowNextWinningLine/>-->
-                <!--<Pause pauseTime="1000"/>-->
-                <!--</LoopBundle>-->
+                <!--                <r:StartWinToBalanceAnimation singleStepDuration="100" skipSoundId="BalanceToWinSkip"/>
+                                <LoopBundle>
+                                    <Pause pauseTime="1000"/>
+                                    <r:ShowNextWinningLine/>
+                                </LoopBundle>-->
             </ParallelBundle>
-            <txGame:SetSymbolsTransparency transparency="false"/>
-            <txGame:StopPayTableAnimation/>
+            <!--<PlaySound soundId="WinCountStop"/>-->
             <r:HideWinningLines/>
-            <r:StopAnimationWinningSymbols/>
-            <r:UpdateMessageArea message="{#LangGameOver} - {#LangPlaceYourBet}" messageType="BOTTOM_PANEL"/>
+            <r:UpdateMessageArea message="{#LangWinnerPaid}" messageType="BOTTOM_PANEL"/>
             <r:UpdatePresentation state="Idle"/>
-            <txGame:ReturnOriginalSymbolDepth/>
             <InsertQueue name="ExecuteNextDependingOnAutoPlaySpin"/>
-            <txGame:ReturnOriginalSymbolDepth/>
+            <b:ReturnOriginalSymbolDepth/>
+            <b:Ftemp2/>
         </actions>
     </queue>
 
@@ -749,7 +352,6 @@
 
     <queue name="EnteringGambler" force="true">
         <actions>
-            <StopSound soundId="GambleLoop"/>
             <r:UpdatePresentation state="EnteringGambler"/>
             <r:SendGambleRequest/>
         </actions>
@@ -760,20 +362,18 @@
             <InsertQueue name="ClearFreeGamesState"/>
             <r:UpdateMessageArea message="{#LangChooseBlackOrRedOrTakeWin}" messageType="BOTTOM_PANEL"/>
             <r:UpdateGamblerHistoryCards/>
-            <!--<PlaySound soundId="Shift"/>-->
+            <PlaySound soundId="Shift"/>
             <r:UpdateGamblerScreen state="SHOWING"/>
             <ShowScreen screenId="gamblerScreen">
                 <animation>
                     <destinationX>0</destinationX>
-                    <timeSpan>1000</timeSpan>
+                    <timeSpan>500</timeSpan>
                 </animation>
             </ShowScreen>
             <r:HideWinningLines/>
-            <txGame:SetSymbolsTransparency transparency="false"/>
-            <txGame:StopPayTableAnimation/>
             <r:UpdateGamblerScreen state="SELECT_CARD"/>
             <r:UpdatePresentation state="Gambler"/>
-            <PlaySound soundId="DeckSound" loop="true"/>
+            <!--<PlaySound soundId="DeckSound" loop="true"/>-->
             <LoopBundle>
                 <ToggleViewVisibility layoutId="gamblerScreen" viewId="animationCard"/>
                 <Pause pauseTime="100"/>
@@ -813,25 +413,38 @@
         <actions>
             <r:UpdatePresentation state="GamblerWin"/>
             <StopSound soundId="DeckSound"/>
+            <StopSound soundId="cardsLoop"/>
             <r:UpdateMessageArea message="{#LangAstraWin}" messageType="BOTTOM_PANEL"/>
+            <PlaySound soundId="doubleChoise"/>
             <ParallelBundle finishCondition="ALL">
                 <r:ShowSelectedGamblerCard/>
-                <r:PlayGamblerFlipCardSound soundId="DoubleWin" minSoundPlayTime="400"/>
+                <!--<b:SimpleCollect gambler="true"/>-->
+                <r:PlayGamblerFlipCardSound soundId="DoubleWin" minSoundPlayTime="900"/>
             </ParallelBundle>
+            <Pause pauseTime="700"/>
+            <ParallelBundle finishCondition="ALL">
+                <b:GambleCollect/>
+                <PlaySound soundId="double_collect" loop="true"/>
+            </ParallelBundle>
+            <StopSound soundId="double_collect"/>
+            <PlaySound soundId="double_collect_end"/>
+
             <Pause pauseTime="1000"/>
             <ParallelBundle finishCondition="ALL">
                 <r:UpdateGamblerHistoryCards/>
                 <r:HideSelectedGamblerCard/>
             </ParallelBundle>
             <PlaySound soundId="DeckSound" loop="true"/>
+            <PlaySound soundId="cardsLoop" loop="true"/>
             <r:UpdateGamblerScreen state="SELECT_CARD"/>
             <r:UpdateMessageArea message="{#LangChooseBlackOrRedOrTakeWin}" messageType="BOTTOM_PANEL"/>
             <r:UpdatePresentation state="Gambler"/>
+            <!--<b:SimpleCollect skip="true"/>-->
             <LoopBundle>
                 <ToggleViewVisibility layoutId="gamblerScreen" viewId="animationCard"/>
                 <Pause pauseTime="100"/>
             </LoopBundle>
-            <txGame:ReturnOriginalSymbolDepth/>
+            <b:ReturnOriginalSymbolDepth/>
         </actions>
     </queue>
 
@@ -839,7 +452,10 @@
         <actions>
             <r:UpdatePresentation state="GamblerLose"/>
             <StopSound soundId="DeckSound"/>
+            <StopSound soundId="cardsLoop"/>
+            <r:UpdateMessageArea message="{#LangAstraLose}" messageType="BOTTOM_PANEL"/>
             <r:ShowSelectedGamblerCard/>
+            <PlaySound soundId="doubleChoise"/>
             <Pause pauseTime="1000"/>
             <r:UpdateGamblerHistoryCards/>
             <r:StopAnimationWinningSymbols/>
@@ -850,46 +466,79 @@
                     <timeSpan>0</timeSpan>
                 </animation>
             </HideScreen>
+            <r:ResetGambler/>
             <r:UpdatePresentation state="GameLose"/>
             <r:UpdateMessageArea message="{#LangGameOver} - {#LangGambleCompleted} - {#LangPlaceYourBet}"
                                  messageType="BOTTOM_PANEL"/>
             <r:UpdatePresentation state="Idle"/>
-            <txGame:ReturnOriginalSymbolDepth/>
+            <!--<b:ResetAllFreeGamesAmount/>-->
+            <b:ReturnOriginalSymbolDepth/>
         </actions>
     </queue>
 
-    <queue name="GamblerTakeWin">
+    <queue name="GamblerLimit">
         <actions>
-            <Pause pauseTime="100"/>
-            <r:StartAnimationWinningSymbols/>
             <StopSound soundId="DeckSound"/>
+            <StopSound soundId="cardsLoop"/>
+            <r:UpdateMessageArea message="{#LangAstraWin}" messageType="BOTTOM_PANEL"/>
+            <PlaySound soundId="doubleChoise"/>
+            <ParallelBundle finishCondition="ALL">
+                <r:ShowSelectedGamblerCard/>
+                <r:PlayGamblerFlipCardSound soundId="DoubleWin" minSoundPlayTime="900"/>
+            </ParallelBundle>
+            <Pause pauseTime="1000"/>
             <HideScreen screenId="gamblerScreen">
                 <animation>
                     <destinationX>1920</destinationX>
                     <timeSpan>0</timeSpan>
                 </animation>
             </HideScreen>
+            <r:ResetGambler/>
+            <ParallelBundle finishCondition="ANY">
+                <r:SendTakeWinRequest/>
+                <LoopBundle>
+                    <r:ShowNextWinningLine/>
+                    <Pause pauseTime="1000"/>
+                </LoopBundle>
+            </ParallelBundle>
+            <b:ReturnOriginalSymbolDepth/>
+            <InsertQueue name="ExecuteNextDependingOnAutoPlaySpin"/>
+        </actions>
+    </queue>
+
+    <queue name="GamblerTakeWin">
+        <actions>
+            <r:HideWinningLines/>
+            <r:StopAnimationWinningSymbols/>
+            <!--<r:StartAnimationWinningSymbols/>-->
+            <StopSound soundId="DeckSound"/>
+            <StopSound soundId="cardsLoop"/>
+            <HideScreen screenId="gamblerScreen">
+                <animation>
+                    <destinationX>1920</destinationX>
+                    <timeSpan>0</timeSpan>
+                </animation>
+            </HideScreen>
+            <r:ResetGambler/>
             <r:UpdatePresentation state="WinCounting"/>
             <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
-            <!--<occore:TransferWin/>-->
-            <txGame:TransferWinCustom/>
-
+            <!--<b:TransferWinCustom/>-->
+            <b:TransferWinCustom/>
 
             <ParallelBundle finishCondition="ANY">
                 <PlaySound soundId="sb_loop"/>
-                <!--&lt;!&ndash;<r:StartWinToBalanceAnimation singleStepDuration="100" skipSoundId="BalanceToWinSkip"/>&ndash;&gt;-->
-                <!--&lt;!&ndash;<LoopBundle>&ndash;&gt;-->
-                <!--&lt;!&ndash;<r:ShowNextWinningLine/>&ndash;&gt;-->
-                <!--&lt;!&ndash;<Pause pauseTime="1000"/>&ndash;&gt;-->
-                <!--&lt;!&ndash;</LoopBundle>&ndash;&gt;-->
+                <!--                <PlaySound soundId="BalanceToWin" loop="true" blocking="true"/>
+                                <r:StartWinToBalanceAnimation singleStepDuration="100" skipSoundId="BalanceToWinSkip"/>
+                                <LoopBundle>
+                                    &lt;!&ndash;<r:ShowNextWinningLine/>&ndash;&gt;
+                                    <Pause pauseTime="1000"/>
+                                </LoopBundle>-->
             </ParallelBundle>
-            <txGame:SetSymbolsTransparency transparency="false"/>
-            <txGame:StopPayTableAnimation/>
-            <r:HideWinningLines/>
-            <r:StopAnimationWinningSymbols/>
-            <r:UpdateMessageArea message="{#LangGameOver} - {#LangPlaceYourBet}" messageType="BOTTOM_PANEL"/>
+            <!--<PlaySound soundId="WinCountStop"/>-->
+            <r:UpdateMessageArea message="{#LangWinnerPaid}" messageType="BOTTOM_PANEL"/>
             <r:UpdatePresentation state="Idle"/>
-            <txGame:ReturnOriginalSymbolDepth/>
+            <b:ReturnOriginalSymbolDepth/>
+            <!--<b:ResetAllFreeGamesAmount/>-->
             <InsertQueue name="ExecuteNextDependingOnAutoPlaySpin"/>
         </actions>
     </queue>
@@ -908,6 +557,703 @@
     <queue name="ExecuteNextDependingOnAutoPlaySpin">
         <actions>
             <r:ExecuteNextDependingOnAutoPlay queueName="SpinReels"/>
+        </actions>
+    </queue>
+
+    <!-- ****************** FREE GAMES ****************** -->
+    <queue name="EnterFreeGames">
+        <actions>
+            <r:UpdatePresentation state="StoppingReels"/>
+            <Bundle>
+                <WaitForTimer timerName="spin"/>
+                <r:StopReels/>
+            </Bundle>
+            <r:UpdatePresentation state="RunningReels"/>
+            <r:StopReels forceStop="true"/>
+            <b:StopSoundSpeenReelBaseGame/>
+            <r:StartAnimationWinningSymbols/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <r:UpdatePresentation state="ReelsWinAnimation"/>
+
+            <!--START COLLECT-->
+            <Bundle>
+                <b:InitCollect/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <r:PlayCurrentWinningLineSound/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+            <!--IF COLLECT DONE THEN SKIP THIS QUEUE-->
+            <b:CheckShortCollect queueName="EnterFreeGamesShortCollect"/>
+
+            <ParallelBundle finishCondition="ANY">
+                <LoopBundle>
+                    <b:UpdateCollectAction2 target="winIndicator"/>
+                    <Pause pauseTime="70"/>
+                </LoopBundle>
+
+                <LoopBundle>
+                    <r:ShowNextWinningLine/>
+                    <occore:ShowLinesPays/>
+                    <Pause pauseTime="1000"/>
+                </LoopBundle>
+
+                <Bundle>
+                    <PlaySound soundId="collect_intro" blocking="true"/>
+                    <PlaySound soundId="collect_loop" loop="true" blocking="true"/>
+                </Bundle>
+
+                <b:FinishCollect play="true"/>
+            </ParallelBundle>
+
+            <StopSound soundId="collect_intro"/>
+            <StopSound soundId="collect_loop"/>
+            <PlaySound soundId="collect_end"/>
+            <occore:WinCountStop/>
+            <b:InitAllFreeGamesAmount/>
+            <!--FINISH COLLECT-->
+
+            <ParallelBundle finishCondition="ALL">
+                <b:ShowFreeGamesWonPanel/>
+                <PlaySound soundId="showFreegamesPanel"/>
+            </ParallelBundle>
+
+            <ShowScreen screenId="enterFeatureBannerScreen"/>
+            <PlaySound soundId="BookFlash"/>
+            <Pause pauseTime="200"/>
+            <PlaySound soundId="bookLoop" loop="true"/>
+            <ChangeViewVisibility layoutId="enterFeatureBannerScreen" viewId="featureButton" visible="true"/>
+            <r:HideWinningLines/>
+            <!--<r:UpdateMessageArea message="{#LangBonusWon} - {#LangPressStartToBegin}" messageType="BOTTOM_PANEL"/>-->
+            <r:ShowInfoScreen screenId="infoScreen" playSound="false" viewId="featureInfoScreen">
+                <animation>
+                    <destinationY>0</destinationY>
+                    <timeSpan>400</timeSpan>
+                </animation>
+            </r:ShowInfoScreen>
+            <b:ShowBgrFreeGames/>
+            <b:FreeGamesMode isFreeGames="true"/>
+            <r:StopAnimationWinningSymbols/>
+            <r:UpdatePresentation state="EnterFreeGames"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="StartExtendedSymbolAnimation"/>
+        </actions>
+    </queue>
+
+    <queue name="EnterFreeGamesShortCollect">
+        <actions>
+            <occore:WinCountStop/>
+            <b:InitAllFreeGamesAmount/>
+
+            <ParallelBundle finishCondition="ALL">
+                <b:ShowFreeGamesWonPanel/>
+                <PlaySound soundId="showFreegamesPanel"/>
+            </ParallelBundle>
+
+            <ShowScreen screenId="enterFeatureBannerScreen"/>
+            <PlaySound soundId="BookFlash"/>
+            <Pause pauseTime="200"/>
+            <PlaySound soundId="bookLoop" loop="true"/>
+            <ChangeViewVisibility layoutId="enterFeatureBannerScreen" viewId="featureButton" visible="true"/>
+            <r:HideWinningLines/>
+            <!--<r:UpdateMessageArea message="{#LangBonusWon} - {#LangPressStartToBegin}" messageType="BOTTOM_PANEL"/>-->
+            <r:ShowInfoScreen screenId="infoScreen" playSound="false" viewId="featureInfoScreen">
+                <animation>
+                    <destinationY>0</destinationY>
+                    <timeSpan>400</timeSpan>
+                </animation>
+            </r:ShowInfoScreen>
+            <b:ShowBgrFreeGames/>
+            <b:FreeGamesMode isFreeGames="true"/>
+            <r:StopAnimationWinningSymbols/>
+            <r:UpdatePresentation state="EnterFreeGames"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="StartExtendedSymbolAnimation"/>
+        </actions>
+    </queue>
+
+
+    <queue name="StartExtendedSymbolAnimation">
+        <actions>
+            <StopSound soundId="bookLoop"/>
+            <r:UpdatePresentation state="SelectingExtendedSymbol"/>
+            <r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>
+            <PlaySound soundId="BookOpen"/>
+            <r:UpdatePresentation state="None"/>
+            <b:StartSelectingExtendedSymbolAnimation/>
+            <e:SelectExtendedSymbolRequest/>
+            <ParallelBundle finishCondition="ANY">
+                <b:ShowSelectedExtendedSymbol/>
+                <LoopBundle>
+                    <b:Bookpause/>
+                    <PlaySound soundId="BookFlipPage1"/>
+                    <b:Bookpause/>
+                    <PlaySound soundId="BookFlipPage2"/>
+                    <b:Bookpause/>
+                    <PlaySound soundId="BookFlipPage3"/>
+                    <b:Bookpause/>
+                    <PlaySound soundId="BookFlipPage4"/>
+                </LoopBundle>
+            </ParallelBundle>
+            <PlaySound soundId="BookFlipPage5"/>
+            <b:HighlightSelectedExtendedSymbol/><!-- мигание рамки символа-->
+            <r:UpdatePresentation state="SelectedExtendedSymbol"/>
+        </actions>
+    </queue>
+
+    <queue name="StartFreeGame">
+        <actions>
+            <Pause pauseTime="100"/>
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesSpin">
+        <actions>
+            <b:FixFreeGamesCollect/>
+            <b:SpinFlashPlay winLine="false"/>
+            <r:UpdatePresentation state="FreeGamesRunningReels"/>
+            <r:SpinReels/>
+            <r:AutoPlayBundle expectAutoPlayOn="true">
+                <Pause pauseTime="200"/>
+            </r:AutoPlayBundle>
+            <r:CleanWinningLines/>
+            <StartTimer timerName="spin" duration="0"/>
+            <f:SendNextFreeGameRequest/>
+            <b:FindStoppedSymbols/>
+        </actions>
+    </queue>
+
+    <queue name="FreeGameNext">
+        <actions>
+            <!--            <PauseSound soundId="FeatureBkg"/>
+                        <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>-->
+            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
+            <InsertQueue name="FreeGamesPresentation"/>
+            <InsertQueue name="FreeGamesSpin"/>
+        </actions>
+    </queue>
+
+
+    <queue name="FreeGamesPresentation1">
+        <actions>
+            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
+            <Bundle>
+                <WaitForTimer timerName="spin"/>
+                <r:StopReels/>
+            </Bundle>
+            <r:UpdatePresentation state="None"/>
+            <r:StopReels forceStop="true"/>
+            <r:UpdatePresentation state="FreeGamesWinAnimation"/>
+
+            <Bundle>
+                <r:StartAnimationWinningSymbols/>
+
+                <!--COLLECT START-->
+                <b:InitFreeGameCollectAction/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:StartAnimationWinningSymbols/>
+                        <PauseSound soundId="FeatureBkg"/>
+                        <PlaySound soundId="FeatureBkg" loop="true" volume="0.4"/>
+                        <b:SpinFlashPlay winLine="true"/>
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <!--<r:UpdateMessageArea message="{#LangLineXPays}" messageType="BOTTOM_PANEL"/>-->
+                        <r:PlayCurrentWinningLineSound/>
+                        <Pause pauseTime="100"/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+            <b:WinCountStopCustom/>
+
+            <Pause pauseTime="100"/>
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+            <r:StopAnimationWinningSymbols/>
+            <e:SwitchWinLines/>
+            <b:ExecuteNextDependingOnEndFreeGames queueName="FreeGamesEnd"/>
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesPresentation2">
+        <actions>
+            <Bundle>
+                <r:StartAnimationWinningSymbols/>
+                <b:InitFreeGameCollectAction extended="true"/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:StartAnimationWinningSymbols/>
+                        <PauseSound soundId="FeatureBkg"/>
+                        <PlaySound soundId="FeatureBkg" loop="true" volume="0.4"/>
+                        <b:SpinFlashPlay winLine="true"/>
+                        <Pause pauseTime="0"/>
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <!--<r:UpdateMessageArea message="{#LangLineXPays}" messageType="BOTTOM_PANEL"/>-->
+                        <b:PlayCurrentWinningLineFreeSound/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+            <b:WinCountStopCustom/>
+
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+            <!--<Pause pauseTime="100"/>-->
+            <r:StopAnimationWinningSymbols/>
+            <b:ExecuteNextDependingOnEndFreeGames queueName="FreeGamesEnd"/>
+            <!--<Pause pauseTime="200"/>-->
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesPresentation">
+        <actions>
+            <!--<b:ExecuteNextDependingOnLoseFreeGame queueName="FreeGameLose"/>-->
+            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
+            <Bundle>
+                <WaitForTimer timerName="spin"/>
+                <r:StopReels/>
+            </Bundle>
+            <r:UpdatePresentation state="None"/>
+            <r:StopReels forceStop="true"/>
+            <r:UpdatePresentation state="FreeGamesWinAnimation"/>
+
+            <Bundle>
+                <b:InitFreeGameCollectAction/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:StartAnimationWinningSymbols/>
+                        <PauseSound soundId="FeatureBkg"/>
+                        <PlaySound soundId="FeatureBkg" loop="true" volume="0.4"/>
+                        <b:SpinFlashPlay winLine="true"/>
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <r:PlayCurrentWinningLineSound/>
+                        <Pause pauseTime="100"/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+
+            <b:CheckShortCollectFreeGames queueName="FreeGamesCollect1"/>
+
+            <ParallelBundle finishCondition="ANY">
+                <LoopBundle>
+                    <b:UpdateCollectAction2 target="winIndicator"/>
+                    <Pause pauseTime="70"/>
+                </LoopBundle>
+
+                <LoopBundle>
+                    <r:ShowNextWinningLine/>
+                    <occore:ShowLinesPays/>
+                    <Pause pauseTime="1000"/>
+                </LoopBundle>
+
+                <Bundle>
+                    <PlaySound soundId="f_collect_intro"/>
+                    <PlaySound soundId="f_collect_loop" loop="true" blocking="true"/>
+                </Bundle>
+
+                <b:FinishCollect play="true"/>
+            </ParallelBundle>
+            <StopSound soundId="f_collect_intro"/>
+            <StopSound soundId="f_collect_loop"/>
+            <PlaySound soundId="f_collect_end"/>
+            <b:WinCountStopCustom/>
+
+
+            <Pause pauseTime="100"/>
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+            <r:StopAnimationWinningSymbols/>
+            <e:SwitchWinLines/>
+
+            <r:StartAnimationWinningSymbols/>
+
+            <Bundle>
+                <b:InitFreeGameCollectAction extended="true"/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:StartAnimationWinningSymbols/>
+                        <PauseSound soundId="FeatureBkg"/>
+                        <PlaySound soundId="FeatureBkg" loop="true" volume="0.4"/>
+                        <b:SpinFlashPlay winLine="true"/>
+                        <Pause pauseTime="0"/><!--Pause display of winning lines-->
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <!--<r:UpdateMessageArea message="{#LangLineXPays}" messageType="BOTTOM_PANEL"/>-->
+                        <!--<r:PlayCurrentWinningLineSound/>-->
+                        <b:PlayCurrentWinningLineFreeSound/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+
+            <b:CheckShortCollectFreeGames queueName="FreeGamesCollect2"/>
+
+            <ParallelBundle finishCondition="ANY">
+                <LoopBundle>
+                    <b:UpdateCollectAction2 target="winIndicator"/>
+                    <Pause pauseTime="70"/>
+                </LoopBundle>
+
+                <LoopBundle>
+                    <r:ShowNextWinningLine/>
+                    <occore:ShowLinesPays/>
+                    <Pause pauseTime="1000"/>
+                </LoopBundle>
+
+                <Bundle>
+                    <PlaySound soundId="f_collect_intro"/>
+                    <PlaySound soundId="f_collect_loop" loop="true" blocking="true"/>
+                </Bundle>
+
+                <b:FinishCollect play="true"/>
+            </ParallelBundle>
+            <StopSound soundId="f_collect_intro"/>
+            <StopSound soundId="f_collect_loop"/>
+            <PlaySound soundId="f_collect_end"/>
+
+            <b:WinCountStopCustom/>
+
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+            <r:StopAnimationWinningSymbols/>
+            <b:ExecuteNextDependingOnEndFreeGames queueName="FreeGamesEnd"/>
+            <!--<Pause pauseTime="200"/>-->
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesCollect1">
+        <actions>
+            <b:WinCountStopCustom/>
+
+            <Pause pauseTime="100"/>
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+            <r:StopAnimationWinningSymbols/>
+            <e:SwitchWinLines/>
+            <r:StartAnimationWinningSymbols/>
+
+
+            <Bundle>
+                <b:InitFreeGameCollectAction extended="true"/>
+                <ParallelBundle finishCondition="ANY">
+                    <LoopBundle>
+                        <b:UpdateCollectAction2 target="winIndicator"/>
+                        <Pause pauseTime="70"/>
+                    </LoopBundle>
+                    <r:WinningLinesBundle>
+                        <r:StartAnimationWinningSymbols/>
+                        <PauseSound soundId="FeatureBkg"/>
+                        <PlaySound soundId="FeatureBkg" loop="true" volume="0.4"/>
+                        <b:SpinFlashPlay winLine="true"/>
+                        <Pause pauseTime="0"/><!--Pause display of winning lines-->
+                        <r:ShowNextWinningLine/>
+                        <occore:ShowLinesPays/>
+                        <!--<r:UpdateMessageArea message="{#LangLineXPays}" messageType="BOTTOM_PANEL"/>-->
+                        <!--<r:PlayCurrentWinningLineSound/>-->
+                        <b:PlayCurrentWinningLineFreeSound/>
+                    </r:WinningLinesBundle>
+                </ParallelBundle>
+            </Bundle>
+
+
+            <b:CheckShortCollectFreeGames queueName="FreeGamesCollect2"/>
+
+            <ParallelBundle finishCondition="ANY">
+                <LoopBundle>
+                    <b:UpdateCollectAction2 target="winIndicator"/>
+                    <Pause pauseTime="70"/>
+                </LoopBundle>
+
+                <LoopBundle>
+                    <r:ShowNextWinningLine/>
+                    <occore:ShowLinesPays/>
+                    <Pause pauseTime="1000"/>
+                </LoopBundle>
+
+                <Bundle>
+                    <PlaySound soundId="f_collect_intro"/>
+                    <PlaySound soundId="f_collect_loop" loop="true" blocking="true"/>
+                </Bundle>
+
+                <b:FinishCollect play="true"/>
+            </ParallelBundle>
+            <StopSound soundId="f_collect_intro"/>
+            <StopSound soundId="f_collect_loop"/>
+            <PlaySound soundId="f_collect_end"/>
+
+            <b:WinCountStopCustom/>
+
+
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+
+            <r:StopAnimationWinningSymbols/>
+            <b:ExecuteNextDependingOnEndFreeGames queueName="FreeGamesEnd"/>
+            <ExecuteNext queueName="FreeGamesSpin"/>
+            <!--<Pause pauseTime="200"/>-->
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesCollect2">
+        <actions>
+            <b:WinCountStopCustom/>
+
+            <PauseSound soundId="FeatureBkg"/>
+            <PlaySound soundId="FeatureBkg" loop="true" volume="1"/>
+            <r:HideWinningLines/>
+
+            <r:StopAnimationWinningSymbols/>
+            <b:ExecuteNextDependingOnEndFreeGames queueName="FreeGamesEnd"/>
+            <ExecuteNext queueName="FreeGamesSpin"/>
+            <!--<Pause pauseTime="200"/>-->
+        </actions>
+    </queue>
+
+
+    <queue name="FreeGamesRetrigger">
+        <actions>
+            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
+            <InsertQueue name="FreeGamesPresentation1"/>
+            <!--<r:UpdateMessageArea message="" messageType="BOTTOM_PANEL"/>-->
+            <ParallelBundle finishCondition="ALL">
+                <b:ShowFreeGamesWonPanel/>
+                <PlaySound soundId="showFreegamesPanel"/>
+            </ParallelBundle>
+            <ShowScreen screenId="freeGamesBannerScreen"/>
+            <r:UpdatePresentation state="FreeGamesRetrigger"/>
+            <Pause pauseTime="3000"/>
+            <b:CustomShowHideScreen showScreen="false" animationTime="400" screenId="freeGamesBannerScreen"/>
+            <InsertQueue name="FreeGamesPresentation2"/>
+            <ExecuteNext queueName="FreeGamesSpin"/>
+        </actions>
+    </queue>
+
+
+    <queue name="FreeGamesWin">
+        <actions>
+            <!--<b:Temp3/>-->
+            <!--<r:UpdateMessageArea message="{#LangFreeGame} - {#LangOf}" messageType="BOTTOM_PANEL"/>-->
+            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
+            <InsertQueue name="FreeGamesPresentation"/>
+
+
+            <!--<r:UpdateMessageArea message="{#LangFreeGamesCompleted}" messageType="BOTTOM_PANEL"/>-->
+            <ExecuteNow queueName="HideFeatureBackground"/>
+            <StopSound soundId="FeatureBkg"/>
+
+            <ParallelBundle finishCondition="ALL">
+                <b:ShowFreeGamesWonPanel/>
+                <PlaySound soundId="showFreegamesPanel"/>
+            </ParallelBundle>
+
+            <ShowScreen screenId="freeGamesBannerScreen"/>
+            <Pause pauseTime="200"/>
+            <r:DisplayStoppedSymbols/>
+            <ParallelBundle finishCondition="ALL">
+                <PlaySound soundId="FeatureEndBanner" blocking="false"/>
+                <b:ReturnBackgroundForBaseGameMode/>
+            </ParallelBundle>
+            <b:MoveUpBackground/>
+            <b:FreeGamesMode isFreeGames="false"/>
+            <b:SetYForTombTextWin/>
+            <e:ResetExtendedSymbol/>
+            <Pause pauseTime="2500"/>
+            <r:UpdatePresentation state="OfferGambler"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
+            <b:ExecuteNextDependingOnGambleOffAction queueName="TakeWin"/>
+            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
+            <b:SetYForTombTextWin/>
+            <PlaySound soundId="GambleLoop" loop="true"/>
+
+            <LoopBundle>
+                <Pause pauseTime="1000"/>
+                <!--<r:ShowNextWinningLine/>-->
+            </LoopBundle>
+            <StopSound soundId="GambleLoop"/>
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesEnd">
+        <actions>
+            <!--<b:Temp3/>-->
+            <!--<r:UpdateMessageArea message="{#LangFreeGame} - {#LangOf}" messageType="BOTTOM_PANEL"/>-->
+            <r:UpdateMessageArea message="{#LangFreeSpin} - {#LangOf}" messageType="BOTTOM_PANEL"/>
+            <!--<InsertQueue name="FreeGamesPresentation"/>-->
+
+
+            <!--            <r:UpdatePresentation state="FreeGamesStoppingReels"/>
+                        <Bundle>
+                            <WaitForTimer timerName="spin"/>
+                            <r:StopReels/>
+                        </Bundle>
+                        <r:UpdatePresentation state="None"/>
+                        <r:StopReels forceStop="true"/>-->
+
+
+            <!--<r:UpdateMessageArea message="{#LangFreeGamesCompleted}" messageType="BOTTOM_PANEL"/>-->
+            <ExecuteNow queueName="HideFeatureBackground"/>
+            <StopSound soundId="FeatureBkg"/>
+
+            <ParallelBundle finishCondition="ALL">
+                <b:ShowFreeGamesWonPanel/>
+                <PlaySound soundId="showFreegamesPanel"/>
+            </ParallelBundle>
+
+            <ShowScreen screenId="freeGamesBannerScreen"/>
+            <Pause pauseTime="200"/>
+            <r:DisplayStoppedSymbols/>
+            <ParallelBundle finishCondition="ALL">
+                <PlaySound soundId="FeatureEndBanner" blocking="false"/>
+                <b:ReturnBackgroundForBaseGameMode/>
+            </ParallelBundle>
+            <b:MoveUpBackground/>
+            <b:FreeGamesMode isFreeGames="false"/>
+            <b:SetYForTombTextWin/>
+            <e:ResetExtendedSymbol/>
+            <Pause pauseTime="2500"/>
+            <r:UpdatePresentation state="OfferGambler"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
+            <b:ExecuteNextDependingOnGambleOffAction queueName="TakeWin"/>
+            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
+            <b:SetYForTombTextWin/>
+            <PlaySound soundId="GambleLoop" loop="true"/>
+
+            <LoopBundle>
+                <Pause pauseTime="1000"/>
+                <!--<r:ShowNextWinningLine/>-->
+            </LoopBundle>
+            <StopSound soundId="GambleLoop"/>
+        </actions>
+    </queue>
+
+    <!--<queue name="FreeGamesWin">
+        <actions>
+            <r:UpdateMessageArea message="{#LangFreeGame} - {#LangOf}" messageType="BOTTOM_PANEL"/>
+            <InsertQueue name="FreeGamesPresentation"/>
+            <r:UpdateMessageArea message="{#LangFreeGamesCompleted}" messageType="BOTTOM_PANEL"/>
+            &lt;!&ndash;<ExecuteNow queueName="HideFeatureBackground"/>&ndash;&gt;
+            &lt;!&ndash;<StopSound soundId="FeatureBkg"/>&ndash;&gt;
+
+            &lt;!&ndash;<b:SetSkipEnable skip="false"/>&ndash;&gt;
+            &lt;!&ndash;            <ParallelBundle finishCondition="ALL">
+                            <b:ShowFreeGamesWonPanel/>
+                            <b:SetSkipEnable skip="false"/>
+                            <PlaySound soundId="showFreegamesPanel"/>
+                        </ParallelBundle>&ndash;&gt;
+
+            &lt;!&ndash;<ShowScreen screenId="freeGamesBannerScreen"/>&ndash;&gt;
+            <Pause pauseTime="200"/>
+            <r:DisplayStoppedSymbols/>
+            &lt;!&ndash;<b:SetSkipEnable skip="false"/>&ndash;&gt;
+            <ParallelBundle finishCondition="ALL">
+                <PlaySound soundId="FeatureEndBanner" blocking="false"/>
+                <b:ReturnBackgroundForBaseGameMode/>
+            </ParallelBundle>
+            &lt;!&ndash;<b:SetSkipEnable skip="false"/>&ndash;&gt;
+            &lt;!&ndash;<b:MoveUpBackground/>&ndash;&gt;
+
+            &lt;!&ndash;<b:FreeGamesMode isFreeGames="false"/>&ndash;&gt;
+            &lt;!&ndash;<b:SetYForTombTextWin/>&ndash;&gt;
+            &lt;!&ndash;<e:ResetExtendedSymbol/>&ndash;&gt;
+
+            <r:UpdatePresentation state="OfferGambler"/>
+            <r:ExecuteNextDependingOnAutoPlay queueName="TakeWin"/>
+            &lt;!&ndash;<b:ExecuteNextDependingOnGambleOffAction queueName="TakeWin"/>&ndash;&gt;
+            <r:UpdateMessageArea message="{#LangGambleOrTakeWin}" messageType="BOTTOM_PANEL"/>
+            &lt;!&ndash;<b:SetYForTombTextWin/>&ndash;&gt;
+            &lt;!&ndash;<PlaySound soundId="GambleLoop" loop="true"/>&ndash;&gt;
+
+            <LoopBundle>
+                <Pause pauseTime="1000"/>
+                &lt;!&ndash;<r:ShowNextWinningLine/>&ndash;&gt;
+            </LoopBundle>
+            &lt;!&ndash;<StopSound soundId="GambleLoop"/>&ndash;&gt;
+        </actions>
+    </queue>-->
+
+    <queue name="SpecialScatter">
+        <actions>
+            <r:HideWinningLines/>
+            <r:StopAnimationWinningSymbols/>
+            <Pause pauseTime="500"/>
+            <b:HideSelectedExtendedSymbol/>
+            <b:CustomShowHideScreen showScreen="false" animationTime="500" screenId="enterFeatureBannerScreen"/>
+            <PlaySound soundId="FeatureBkg" loop="true"/>
+            <b:SpinFlashPlay winLine="true"/>
+            <HideScreen screenId="infoScreen">
+                <animation>
+                    <destinationY>-1200</destinationY>
+                    <timeSpan>0</timeSpan>
+                </animation>
+            </HideScreen>
+            <ExecuteNext queueName="FreeGamesSpin"/>
+        </actions>
+    </queue>
+
+    <queue name="ClearFreeGamesState">
+        <actions>
+            <f:ResetFreeGames/>
+            <!--            <b:SetSkipEnable skip="false"/>
+                        <ParallelBundle finishCondition="ALL">
+                            <b:CustomShowHideScreen showScreen="false" animationTime="400" screenId="freeGamesBannerScreen"/>
+                            <b:CustomShowHideScreen showScreen="false" animationTime="400" screenId="enterFeatureBannerScreen"/>
+                        </ParallelBundle>
+                        <f:ResetFreeGames/>-->
+        </actions>
+    </queue>
+
+    <queue name="FreeGamesLimit">
+        <actions>
+            <InsertQueue name="FreeGamesPresentation"/>
+            <Pause pauseTime="500"/>
+            <!--<r:UpdateMessageArea message="{#LangFreeGamesCompleted}" messageType="BOTTOM_PANEL"/>-->
+            <ShowScreen screenId="freeGamesBannerScreen"/>
+            <PlaySound soundId="FeatureEndBanner" blocking="true"/>
+            <!--            <b:MoveUpBackground/>
+                        <b:SetYForTombTextWin/>-->
+            <e:ResetExtendedSymbol/>
+            <r:DisplayStoppedSymbols/>
+            <InsertQueue name="ClearFreeGamesState"/>
+            <!--<ExecuteNow queueName="HideFeatureBackground"/>-->
+            <!--<PlaySound soundId="collectEndFreegames"/>-->
+            <ExecuteNext queueName="TakeWin"/>
+        </actions>
+    </queue>
+
+    <queue name="HideFeatureBackground">
+        <actions>
+            <ChangeViewVisibility layoutId="reel_bg_free_game" viewId="oneColumn" visible="false"/>
+            <ChangeViewVisibility layoutId="reel_bg_free_game" viewId="twoColumn" visible="false"/>
+            <ChangeViewVisibility layoutId="reel_bg_free_game" viewId="threeColumn" visible="false"/>
+            <ChangeViewVisibility layoutId="reel_bg_free_game" viewId="fourColumn" visible="false"/>
+            <ChangeViewVisibility layoutId="reel_bg_free_game" viewId="fiveColumn" visible="false"/>
         </actions>
     </queue>
 
